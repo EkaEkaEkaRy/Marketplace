@@ -1,0 +1,72 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import s from "./login.module.css"
+import React from 'react';
+
+const LoginForm = () => {
+
+    const navigate = useNavigate();
+    /*
+    const [authenticated, setauthenticated] = useState(
+        localStorage.getItem(localStorage.getItem("authenticated") || false));
+    */
+    
+    let [user, setuser] = useState({
+        login: "",
+        password: ""
+    })
+
+    let name, value;
+
+
+    const handlerChange = (event) => {
+        name = event.target.name;
+        value = event.target.value;
+        setuser({ ...user, [name]: value })
+    }
+
+
+    const handlerSubmit = async (event) => {
+        console.log(1)
+        event.preventDefault();
+        const {login, password} = user;
+        const res = await fetch('http://localhost:1337/api/find-user?mail=' + login + '&password=' + password, {
+            method: "GET",
+            headers: { "Accept": "application/json", "Content-Type":
+            "application/json" }
+        });
+        const data = res.json();
+        if (res.status === 404 || !data) document.getElementById("answer_for_user_login").innerHTML = "пользователя не существует";
+        else if (res.status === 400) document.getElementById("answer_for_user_login").innerHTML ="неверный пароль";
+        else {
+            //setauthenticated(true)
+            //localStorage.setItem("authenticated", true);
+            localStorage.setItem('userMailId', login);
+            navigate("/*");
+          }
+        
+
+        
+    };
+
+    return (
+        <div className={s.signup}>
+            <form className={s.login} onSubmit={handlerSubmit}>
+                <div className={s.title}>Вход</div>
+                <div className={s.login_wrapper}>
+                    <div><input className={s.input} name="login" type="text" placeholder='Почта' value={user.login} onChange={handlerChange} required /></div>
+                    <div><input className={s.input} name="password" type="password" placeholder='Пароль' value={user.password} onChange={handlerChange} required /></div>
+                    <div id="answer_for_user_login"></div>
+                    <div>
+                        <input className={s.button} type="submit" value="Войти" />
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+
+
+    )
+}
+
+export default LoginForm

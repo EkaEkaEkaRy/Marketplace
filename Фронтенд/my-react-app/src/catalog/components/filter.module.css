@@ -1,0 +1,66 @@
+.back {
+    border-bottom: solid #c2b9b0;
+    padding: 1rem;
+}
+
+.input_place {
+    margin-right: 3rem;
+}
+
+.lines {
+    margin-bottom: 1rem;
+    color: #2c1100;
+}
+
+.input1 {
+    line-height: 2;
+    border-radius: 5px;
+    border-color: #c2b9b0;
+    border-style: solid;
+    font-family: "Andika", sans-serif;
+    width: 25rem;
+    color: #E7717D;
+    display:inline-block;
+  }
+
+
+  p-multiselect-label-container {
+    background-color: white;
+  }
+
+  .input2 {
+    line-height: 2;
+    border-radius: 5px;
+    border-color: #c2b9b0;
+    border-style: solid;
+    padding-left: 20px;
+    font-family: "Andika", sans-serif;
+    width: 5rem;
+    color: #E7717D;
+  }
+
+  .input_name {
+    line-height: 2.3;
+    border-radius: 5px;
+    border-color: #c2b9b0;
+    border-style: solid;
+    padding-left: 20px;
+    width: 30rem;
+    font-family: "Andika", sans-serif;
+    width: 30rem;
+  }
+
+.button {
+    line-height: 1.2;
+    padding: 10px 30px;
+    margin-top: 18px;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #E7717D;
+    color: #FFFDF9;
+    font-family: "Andika", sans-serif;
+    cursor: pointer;
+  }

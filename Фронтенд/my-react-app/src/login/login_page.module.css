@@ -1,0 +1,36 @@
+.back {
+    background-color: #ffffff;
+    height: 100vh;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.app_wrapper {
+  font-family: "Andika", sans-serif;
+  margin: auto;
+  padding: 0;
+  height: 100vh;
+  /*background-image: url('back.svg');
+  background-repeat: repeat;*/
+  background-color: #FFFDF9;
+  display: block;
+}
+
+.main {
+  padding-top: 30px;
+  color: #081F5C;
+}
+a {
+  color: #081F5C;
+}
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7%;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 170px;
+}

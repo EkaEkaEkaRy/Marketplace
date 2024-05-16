@@ -1,0 +1,16 @@
+.back {
+    background-color: #ffffff;
+    height: 100%;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 5rem;
+    margin-right: 5rem;
+    
+}
+
+.filter {
+    padding-top: 2.5rem;
+}
