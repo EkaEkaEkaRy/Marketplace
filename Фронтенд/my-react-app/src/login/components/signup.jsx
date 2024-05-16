@@ -49,13 +49,13 @@ const Signup = () => {
                 password,
                 })
             });
-            const data = res.json();
+            const data = await res.json();
             console.log(res.status)
             if (res.status === 404 || !data) document.getElementById("answer_for_user").innerHTML = "Пользователь уже существует"
             else if (res.status === 500) document.getElementById("answer_for_user").innerHTML = "Попробуйте позже"
             //setauthenticated(true)
             else {
-                localStorage.setItem('userMailId', login);
+                localStorage.setItem('userId', data['id']);
                 navigate("/*");
             }
 

@@ -5,4 +5,15 @@
     width: 100%;
     position: fixed;
     margin-top: 0;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.sh_cart {
+    height: 2.2rem;
+    width: 2.2rem;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
 }

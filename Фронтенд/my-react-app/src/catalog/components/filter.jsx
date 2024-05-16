@@ -16,7 +16,7 @@ const Filter = () => {
     return (
         <div className={s.back}>
             <div>
-                <form action="#" method="POST">
+                <form action="#" method="POST" className={s.form}>
                     <div>
                         <div className={s.lines}>
                             <label className={s.input_place}>

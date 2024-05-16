@@ -27,7 +27,6 @@ const LoginForm = () => {
 
 
     const handlerSubmit = async (event) => {
-        console.log(1)
         event.preventDefault();
         const {login, password} = user;
         const res = await fetch('http://localhost:1337/api/find-user?mail=' + login + '&password=' + password, {
@@ -35,14 +34,15 @@ const LoginForm = () => {
             headers: { "Accept": "application/json", "Content-Type":
             "application/json" }
         });
-        const data = res.json();
+        const data = await res.json();
         if (res.status === 404 || !data) document.getElementById("answer_for_user_login").innerHTML = "пользователя не существует";
         else if (res.status === 400) document.getElementById("answer_for_user_login").innerHTML ="неверный пароль";
         else {
             //setauthenticated(true)
             //localStorage.setItem("authenticated", true);
-            localStorage.setItem('userMailId', login);
-            navigate("/*");
+            localStorage.setItem('userId', data[0]['id']);
+            if (data[0]['role'] === '2') navigate("/Bunch_sklad");
+            else navigate("/*");
           }
         
 
