@@ -54,7 +54,7 @@ const ProductSelector = () => {
 
   return (
     <div>
-      <input className={s.input} name="type" type="text" value={inputValue}
+      <input className={s.input} name="type" value={inputValue}
         onChange={handleInputChange} placeholder="Выберите цветок"
       />
       {inputValue && getMatchingProducts() && (

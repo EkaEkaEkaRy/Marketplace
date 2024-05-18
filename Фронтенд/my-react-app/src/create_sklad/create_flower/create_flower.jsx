@@ -19,6 +19,25 @@ const Create_bunch = () => {
         count: ""
     })
 
+    const [isCreating, setIsCreating] = useState(true);
+    const [newTypeValue, setNewTypeValue] = useState('');
+
+    const handleCreateNewType = () => {
+        if(isCreating) setIsCreating(false);
+        else setIsCreating(true);
+    };
+
+    const handleSubmitNewType = (event) => {
+        event.preventDefault();
+        // Здесь вы можете добавить логику для отправки нового типа на сервер
+        setIsCreating(false);
+        setNewTypeValue('');
+    };
+
+    const handleInputChange = (event) => {
+        setNewTypeValue(event.target.value);
+    };
+
     let name, value;
 
     const handlerChange = (event) => {
@@ -49,7 +68,16 @@ const Create_bunch = () => {
             <form onSubmit={handlerSubmit}>
                 <div>
                     <div className={s.form}><ImageUploader/></div>
-                    <div className={s.form}><ProductSelector/></div>
+                    <div className={s.form}><ProductSelector/><input onClick={handleCreateNewType} type="button" className={s.create_type_button} value={'Создать новый тип'}/>
+                    </div>
+                    {!isCreating && (
+                        <div className={s.form}>
+                        <input className={s.type_form} name="new_type" type="text" value={newTypeValue} onChange={handleInputChange} placeholder="Введите новый тип"/>
+                        <input className={s.type_button} onClick={handleSubmitNewType} type="button" value='Создать'/>
+                        </div>
+                    )}
+
+
                     <div className={s.form}><input className={s.input} name="cost" type="number" placeholder='Стоимость цветка' value={user.cost} onChange={handlerChange} required /></div>
                     <div className={s.form}><input className={s.input} name="count" type="number" placeholder='Количество цветов на складе' value={user.count} onChange={handlerChange} required /></div>
                     <div className={s.form}>
