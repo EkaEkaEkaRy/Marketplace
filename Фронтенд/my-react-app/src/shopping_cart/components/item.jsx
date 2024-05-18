@@ -1,9 +1,8 @@
 import { NavLink } from "react-router-dom"
-import s from "./ad.module.css"
+import s from "./item.module.css"
 import React from 'react';
-import Sh_cart from './images/shopping-cart2.png'
 
-const Ad = (props) => {
+const Item = (props) => {
     const name = props.name
     const image = props.image
     const price = props.price
@@ -17,16 +16,10 @@ const Ad = (props) => {
                 <div>{name}</div>
                 <div>Цена: {price}</div>
             </div>
-            <div className={s.navlink}>
-                <NavLink to="/Booking">
-                    <img src={Sh_cart} alt="Корзина" className={s.icon_sh}/>
-                </NavLink>
-
-            </div>
         </div>
         </NavLink>
         </div>
     )
 }
 
-export default Ad
+export default Item

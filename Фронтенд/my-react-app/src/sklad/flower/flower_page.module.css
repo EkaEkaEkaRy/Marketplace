@@ -2,3 +2,30 @@
     background-color: #ffffff;
     height: 100%;
 }
+
+.button {
+    line-height: 1.2;
+    padding: 10px 30px;
+    padding-left: 1.2rem;
+    margin-top: 18px;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #E7717D;
+    color: #FFFDF9;
+    font-family: "Andika", sans-serif;
+    cursor: pointer;
+    margin-left: 2rem;
+    display: flex;
+    position: left;
+  }
+
+  .plus {
+    height: 1.2rem;
+    width: 1.2rem;
+    padding-left: 0;
+    margin-left: 0;
+    padding-right: 1rem;
+  }

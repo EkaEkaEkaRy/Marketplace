@@ -1,4 +1,4 @@
-import Header from "./components/header"
+import Header from "../header/header"
 import Manu from "./components/manu"
 import s from "./bunch_page.module.css"
 import { NavLink } from "react-router-dom"

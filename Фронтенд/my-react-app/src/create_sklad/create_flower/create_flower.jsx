@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import s from './create_b.module.css'
+import s from './create_f.module.css'
 import Header from '../../sklad/header/header';
 import ImageUploader from '../image_add/image_add';
 import ProductSelector from './components/select_flower';
@@ -14,7 +14,9 @@ const Create_bunch = () => {
     */
     
     let [user, setuser] = useState({
-        name: ""
+        type: "",
+        cost: "",
+        count: ""
     })
 
     let name, value;
@@ -46,9 +48,10 @@ const Create_bunch = () => {
             <div>
             <form onSubmit={handlerSubmit}>
                 <div>
-                    <div className={s.form}><input className={s.input} name="name" type="text" placeholder='Название букета' value={user.name} onChange={handlerChange} required /></div>
                     <div className={s.form}><ImageUploader/></div>
                     <div className={s.form}><ProductSelector/></div>
+                    <div className={s.form}><input className={s.input} name="cost" type="number" placeholder='Стоимость цветка' value={user.cost} onChange={handlerChange} required /></div>
+                    <div className={s.form}><input className={s.input} name="count" type="number" placeholder='Количество цветов на складе' value={user.count} onChange={handlerChange} required /></div>
                     <div className={s.form}>
                         <input className={s.button} type="submit" value="Войти" />
                     </div>

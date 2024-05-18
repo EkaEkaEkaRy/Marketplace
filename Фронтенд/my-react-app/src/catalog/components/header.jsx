@@ -19,7 +19,7 @@ const Header = () => {
     
     return (
         <header className={s.head}>
-            <NavLink to="/Profile"> 
+            <NavLink to="/Shopping_cart"> 
                     <img src={Shop_cart} alt="Корзина" className={s.sh_cart}/>
             </NavLink>
             <NavLink to="/Profile"> 

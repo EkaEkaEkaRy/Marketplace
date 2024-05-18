@@ -1,0 +1,50 @@
+.item {
+    height: 25em;
+    padding: 0 0;
+    border: solid black 2px;
+    border-radius: 2em;
+    margin-top: 1em;
+    transition: transform 0.5s;
+    z-index: 100;
+}
+.item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px 5px #FFAA4A;
+    z-index: 100;
+}
+.picture {
+    width: 100%;
+    height:auto;
+    border-radius: 12%;
+    z-index: 100;
+}
+.descript {
+    margin: 5% 5%;
+    z-index: 100;
+}
+.descript_header {
+    font-size: 1.4em;
+    font-weight: 500;
+    z-index: 100;
+}
+.buton {
+    text-align: center;
+    z-index: 100;
+}
+.button {
+    width: 90%;
+    line-height: 1.9;
+    font-size: 1.2em;
+    padding: 7px 30px;
+    border-radius: 2em;
+    border: none;
+    margin-top: 1em;
+    background-color: #FFAA4A;
+    z-index: 100;
+}
+.button:hover {
+    background-color: #FFA033;
+    cursor: pointer;
+    z-index: 100;
+    
+}
