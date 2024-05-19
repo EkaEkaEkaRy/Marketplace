@@ -8,6 +8,7 @@ import Orders from './sklad/orders/orders'
 import Create_bunch from "./create_sklad/create_bunch/create_bunch";
 import Create_flower from "./create_sklad/create_flower/create_flower.jsx"
 import Shopping_cart from "./shopping_cart/shopping_cart";
+import Profile from "./profile_page/profile.jsx";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Flower_sklad" Component={Flower_sklad}/>
         <Route path="/Flower_sklad/Create" Component={Create_flower}/>
         <Route path="/Orders" Component={Orders}/>
+        <Route path="/Profile" Component={Profile}/>
       </Routes>
     </BrowserRouter>
   );

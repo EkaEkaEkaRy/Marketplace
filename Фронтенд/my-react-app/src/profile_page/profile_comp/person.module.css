@@ -1,0 +1,37 @@
+.person {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    font-weight: 700;
+    border: none;
+    @media (max-width: 480px) {
+        font-size: 1.4em;
+    }
+    @media (max-width: 768px) and (min-width: 481px){
+        font-size: 1.5em;
+    }
+    @media (min-width: 768px) {
+        font-size: 1.6em;
+    }
+}
+
+.person :hover {
+    border: none;
+}
+
+.ava {
+    
+    @media (max-width: 480px) {
+        height: 75px;
+    }
+    @media (max-width: 768px) and (min-width: 481px){
+        height: 80px;
+    }
+    @media (min-width: 768px) {
+        height: 90px;
+    }
+    width: auto;
+    border: none;
+}
