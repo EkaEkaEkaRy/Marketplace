@@ -30,7 +30,6 @@ const ProductSelector = () => {
 
 
   const handleProductSelect = (product) => {
-    console.log(selectedProducts)
     let count = 0;
     selectedProducts.map((pr) => {if (pr.name == product) count += 1;})
     if (count == 0) {

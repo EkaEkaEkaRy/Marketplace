@@ -18,3 +18,18 @@
     padding-top: 0.5rem;
     padding-right: 1rem;
 }
+
+.user_img {
+    height: 2.2rem;
+    width: 2.2rem;
+    object-fit: cover;
+}
+
+.avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+}

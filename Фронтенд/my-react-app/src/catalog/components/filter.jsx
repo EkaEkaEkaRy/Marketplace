@@ -1,7 +1,7 @@
 import s from "./filter.module.css"
 //import React, { useState } from "react";
 //import { MultiSelect } from "react-multi-select-component";
-import MultiSelect from "./multiSelect/MultiSelectMain";
+import MultiSelect from "./MultiSelectMain";
 
 const Filter = () => {
     //const [selectedFlowers, setSelectedFlowers] = useState([]);
@@ -24,9 +24,7 @@ const Filter = () => {
                 <form action="#" method="POST" className={s.form}>
                     <div>
                         
-                        <div className={s.lines}>
-                                Тип цветов в букете <MultiSelect/>
-                        </div>
+                        <MultiSelect/>
                         <div className={s.lines}>
                         <label className={s.input_place}>Количество цветов в букете <input className={s.input2} type="number"></input></label>
                         </div>
