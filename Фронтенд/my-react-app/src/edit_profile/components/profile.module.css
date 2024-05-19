@@ -1,0 +1,26 @@
+.ava {
+    
+    @media (max-width: 480px) {
+        height: 5rem;
+    }
+    @media (max-width: 768px) and (min-width: 481px){
+        height: 9rem;
+    }
+    @media (min-width: 768px) {
+        height: 12rem;
+    }
+}
+
+.image_form {
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  .centerElement {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+  }

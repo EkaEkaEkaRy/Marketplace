@@ -3,20 +3,7 @@ import s from "./filter.module.css"
 //import { MultiSelect } from "react-multi-select-component";
 import MultiSelect from "./MultiSelectMain";
 
-const Filter = () => {
-    //const [selectedFlowers, setSelectedFlowers] = useState([]);
-    /*
-    const flowers = [
-        { label: 'Роза', value: 'роза' },
-        { label: 'Ромашка', value: 'ромашка' },
-        { label: 'Тюльпан', value: 'тюльпан' },
-        { label: 'Незабудка', value: 'незабудка' },
-        { label: 'Фиалка', value: 'фиалка' },
-        { label: 'Подсолнух', value: 'подсолнух' }
-    ];
-    */
-
-    
+const Filter = () => {    
 
     return (
         <div className={s.back}>
