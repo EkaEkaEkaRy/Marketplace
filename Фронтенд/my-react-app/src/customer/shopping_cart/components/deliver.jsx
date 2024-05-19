@@ -1,19 +1,21 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import s from "./login.module.css"
+//import { useNavigate } from "react-router-dom";
+import s from "./deliver.module.css"
 import React from 'react';
 
-const LoginForm = () => {
+const DeliverForm = () => {
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     /*
     const [authenticated, setauthenticated] = useState(
         localStorage.getItem(localStorage.getItem("authenticated") || false));
     */
     
     let [user, setuser] = useState({
-        login: "",
-        password: ""
+        address: "",
+        date: "",
+        time: "",
+        comment: ""
     })
 
     let name, value;
@@ -27,6 +29,7 @@ const LoginForm = () => {
 
 
     const handlerSubmit = async (event) => {
+        /* 
         event.preventDefault();
         const {login, password} = user;
         const res = await fetch('http://localhost:1337/api/find-user?mail=' + login + '&password=' + password, {
@@ -41,27 +44,24 @@ const LoginForm = () => {
             //setauthenticated(true)
             //localStorage.setItem("authenticated", true);
             localStorage.setItem('userId', data[0]['id']);
-            if (data[0]['role'] === '2') {
-                localStorage.setItem('user_role', '2')
-                navigate("/Bunch_sklad");
-            }
-            else {
-                localStorage.setItem('user_role', '1')
-                navigate("/*");
-            }
+            if (data[0]['role'] === '2') navigate("/Bunch_sklad");
+            else navigate("/*");
+            
           }
         
-
+          */
         
     };
 
     return (
-        <div className={s.signup}>
-            <form className={s.login} onSubmit={handlerSubmit}>
-                <div className={s.title}>Вход</div>
+        <div>
+            <form onSubmit={handlerSubmit}>
+                <div className={s.title}>Форма для оформления заказа</div>
                 <div className={s.login_wrapper}>
-                    <div><input className={s.input} name="login" type="text" placeholder='Почта' value={user.login} onChange={handlerChange} required /></div>
-                    <div><input className={s.input} name="password" type="password" placeholder='Пароль' value={user.password} onChange={handlerChange} required /></div>
+                    <div><input className={s.input} name="address" type="text" placeholder='Адрес доставки' value={user.address} onChange={handlerChange} required /></div>
+                    <div><input className={s.input} name="date" type="date" placeholder='Дата доставки' value={user.date} onChange={handlerChange} required /></div>
+                    <div><input className={s.input} name="time" type="time" placeholder='Время доставки' value={user.time} onChange={handlerChange} required /></div>
+                    <div><input className={s.input} name="comment" type="text" placeholder='Комментарий к заказу' value={user.comment} onChange={handlerChange} required /></div>
                     <div id="answer_for_user_login"></div>
                     <div>
                         <input className={s.button} type="submit" value="Войти" />
@@ -75,4 +75,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm
+export default DeliverForm

@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.app_wrapper {
+    font-family: "Andika", sans-serif;
+    margin: auto;
+    padding: 0;
+    height: 100%;
+    background-color: #FFFDF9;
+
+    @media (max-width: 480px) {
+        font-size: 1em;
+    }
+    @media (min-width: 481px) and (max-width: 768px) {
+        font-size: 1.1em;
+    }
+    @media (min-width: 769px) {
+        font-size: 1.2em;
+    }
+}
+.header {
+    position: absolute;
+}
+.main {
+    padding: 0 5%;
+    color: #081F5C;
+    background-color: white;
+}
+
+a {
+    color: #081F5C;
+}
+
+.content_wrapper {
+    @media (min-width: 769px) {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-column-gap: 5%;
+    }
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+    }
+    margin-top: 5%;
+}

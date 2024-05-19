@@ -1,0 +1,64 @@
+.person {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    
+    font-weight: 700;
+    border: none;
+    @media (max-width: 480px) {
+        font-size: 1.4em;
+    }
+    @media (max-width: 768px) and (min-width: 481px){
+        font-size: 1.5em;
+    }
+    @media (min-width: 768px) {
+        font-size: 1.6em;
+    }
+}
+
+.person :hover {
+    border: none;
+}
+
+.ava {
+    
+    @media (max-width: 480px) {
+        height: 4rem;
+    }
+    @media (max-width: 768px) and (min-width: 481px){
+        height: 6rem;
+    }
+    @media (min-width: 768px) {
+        height: 10rem;
+    }
+}
+
+.image_form {
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .centerElement {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .image {
+    position: relative;
+    left: 10rem;
+    top: 4rem;
+    width: 2rem;
+    height: 2rem;
+  }

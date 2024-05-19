@@ -56,6 +56,7 @@ const Signup = () => {
             //setauthenticated(true)
             else {
                 localStorage.setItem('userId', data['id']);
+                localStorage.setItem('user_role', '1')
                 navigate("/*");
             }
 

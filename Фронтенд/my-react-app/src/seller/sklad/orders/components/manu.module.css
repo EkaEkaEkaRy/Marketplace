@@ -1,0 +1,17 @@
+.manu {
+    padding-top: 4rem;
+    display: flex;
+    position: fixed;
+    position: left;
+    margin-left: 2rem;
+    font-size: 1.5em;
+    color: #E7717D;
+    
+}
+
+.text_menu {
+    text-decoration: none;
+    color: #000000;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
