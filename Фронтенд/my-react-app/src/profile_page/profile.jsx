@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom"
 import p from "./profile.module.css"
-import Header from './components/header_p'
+import Header from './components/header'
 import Person from './components/person'
 import History from './components/history'
 import { useState } from 'react';
