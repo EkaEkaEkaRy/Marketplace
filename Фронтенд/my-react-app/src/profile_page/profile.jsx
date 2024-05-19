@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom"
 import p from "./profile.module.css"
-import Header from './profile_comp/header_p'
-import Person from './profile_comp/person'
-import History from './profile_comp/history'
+import Header from './components/header_p'
+import Person from './components/person'
+import History from './components/history'
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 
