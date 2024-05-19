@@ -1,5 +1,6 @@
 const express = require("express");
-const userRouter = require("./routers/userRouters.js");
+const userRouter = require("./routers/userRouter.js");
+const bunchRouter = require("./routers/bunchRouter.js")
 
 const app = express();
 app.use(express.json());
@@ -11,7 +12,9 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use("/api", bunchRouter);
 app.use("/api", userRouter);
+
 
 
    
