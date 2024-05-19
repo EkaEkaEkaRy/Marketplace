@@ -4,6 +4,7 @@ import s from './create_f.module.css'
 import Header from '../../sklad/header/header';
 import ImageUploader from '../image_add/image_add';
 import ProductSelector from './components/select_flower';
+import Delete_flower from './components/image/recycle-bin.png'
 
 const Create_bunch = () => {
 
@@ -27,10 +28,20 @@ const Create_bunch = () => {
         else setIsCreating(true);
     };
 
-    const handleSubmitNewType = (event) => {
+    const handleSubmitNewType = async (event) => {
         event.preventDefault();
-        // Здесь вы можете добавить логику для отправки нового типа на сервер
-        setIsCreating(false);
+        const type = newTypeValue
+        const res = await fetch('http://localhost:1337/api/flower-type', {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type":
+                "application/json" },
+                body: JSON.stringify({
+                    type
+                })
+            });
+            if (res.status === 400) console.log('Новый тип не был добавлен')
+            else console.log('Новый тип создан')
+        setIsCreating(true);
         setNewTypeValue('');
     };
 
@@ -63,7 +74,7 @@ const Create_bunch = () => {
         <div className={s.app_wrapper}>
             <Header/>
       <main className={s.main}>
-      <div className={s.title}>Создать букет</div>
+      <div className={s.title}>Создать цветок</div>
         <div className={s.item}>
             <div>
             <form onSubmit={handlerSubmit}>
@@ -89,6 +100,7 @@ const Create_bunch = () => {
             </form>
         </div>
         </div>
+        <div className={s.delete_text}>Удалить информацию о цветке <img src={Delete_flower} alt="" className={s.delete_img}/></div>
       </main>
     </div>
     )

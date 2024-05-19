@@ -67,7 +67,7 @@ a {
     color: #FFFDF9;
     font-family: "Andika", sans-serif;
     cursor: pointer;
-    margin-bottom: 7rem;
+    margin-bottom: 5rem;
     margin-top: 3rem;
   }
 
@@ -122,4 +122,18 @@ a {
     font-family: "Andika", sans-serif;
     cursor: pointer;
     width: 7rem;
+  }
+
+  .delete_img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .delete_text {
+    font-size: 18px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 1rem;
+    padding-bottom: 2rem;
   }
