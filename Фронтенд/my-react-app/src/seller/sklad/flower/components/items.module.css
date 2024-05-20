@@ -1,0 +1,31 @@
+.back {
+    background-color: #ebebeb;
+    width: 16rem;
+    padding: 1%;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+    margin-top: 0.4rem;
+}
+
+.item {
+    display: inline-block;
+}
+
+.image_position {
+    margin-top: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flower_image {
+    width: 15rem;
+    height: 15rem;
+}
+
+.text_position {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+}

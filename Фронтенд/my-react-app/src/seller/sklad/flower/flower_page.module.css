@@ -29,3 +29,11 @@
     margin-left: 0;
     padding-right: 1rem;
   }
+
+  .items {
+    margin-top: 4rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    align-items: center;
+    justify-content: center;
+}

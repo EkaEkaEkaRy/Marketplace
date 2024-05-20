@@ -28,17 +28,28 @@ const ProductSelector = () => {
   const handleInputChange = (event) => {
     const value = event.target.value;
     setInputValue(value);
+    localStorage.setItem('flower_type_for_create_flower_form', value)
   };
+
+  function contains(arr, elem) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === elem) {
+            return true;
+        }
+    }
+    return false;
+  }
 
   const getMatchingProducts = () => {
     const regex = new RegExp(inputValue, 'i');
     const matchingProducts = products.filter((product) => regex.test(product)).slice(0, 3);
-    return matchingProducts[0] === inputValue && matchingProducts.length === 1? null: matchingProducts.length > 0 ? matchingProducts : ['Цветок не найден'];
+    return contains(matchingProducts, inputValue)? null: matchingProducts.length > 0 ? matchingProducts : ['Цветок не найден'];
   };
 
 
   const handleProductSelect = (product) => {
     setInputValue(product);
+    localStorage.setItem('flower_type_for_create_flower_form', product)
   };
 
   const buttonRef = useRef(null);

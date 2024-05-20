@@ -2,22 +2,18 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import s from './create_f.module.css'
 import Header from '../../sklad/header/header';
-import ImageUploader from '../image_add/image_add';
 import ProductSelector from './components/select_flower';
 import Delete_flower from './components/image/recycle-bin.png'
 
 const Create_bunch = () => {
 
     const navigate = useNavigate();
-    /*
-    const [authenticated, setauthenticated] = useState(
-        localStorage.getItem(localStorage.getItem("authenticated") || false));
-    */
+
     
     let [user, setuser] = useState({
-        type: "",
-        cost: "",
-        count: ""
+        seller: localStorage.getItem('userId'),
+        count: "",
+        cost: ""
     })
 
     const [isCreating, setIsCreating] = useState(true);
@@ -57,16 +53,27 @@ const Create_bunch = () => {
         setuser({ ...user, [name]: value })
     }
 
+    const [image, setImage] = useState(null);
+
+    const handleImageUpload = (event) => {
+        setImage(event.target.files[0]);
+    };
+
 
     const handlerSubmit = async (event) => {
         event.preventDefault();
-        const {login, password} = user;
-        const res = await fetch('http://localhost:1337/api/find-user?mail=' + login + '&password=' + password, {
-            method: "GET",
-            headers: { "Accept": "application/json", "Content-Type":
-            "application/json" }
+        const formData = new FormData();
+        formData.append('flower', localStorage.getItem('flower_type_for_create_flower_form'))
+        formData.append('seller', user.seller);
+        formData.append('count', user.count);
+        formData.append('cost', user.cost);
+        formData.append('image', image);
+
+        const res = await fetch('http://localhost:1337/api/flower', {
+            method: "POST",
+            body: formData,
         });
-        const data = await res.json();
+        if (res.ok) navigate('/Flower_sklad')
     }
 
     if (localStorage.getItem('user_role') === '2')
@@ -79,7 +86,22 @@ const Create_bunch = () => {
             <div>
             <form onSubmit={handlerSubmit}>
                 <div>
-                    <div className={s.form}><ImageUploader/></div>
+                    <div className={s.form}>
+                        <div> 
+                            <input type="file" onChange={handleImageUpload} className={s.input}
+                            />
+                            {user.image && (
+                                <div>
+                                <img
+                                    src={URL.createObjectURL(user.image)}
+                                    alt="Uploaded"
+                                    style={{ width: '15rem', height: '15rem', marginTop: '1rem' }}
+                                />
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    
                     <div className={s.form}><ProductSelector/><input onClick={handleCreateNewType} type="button" className={s.create_type_button} value={'Создать новый тип'}/>
                     </div>
                     {!isCreating && (
