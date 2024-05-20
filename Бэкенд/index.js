@@ -1,6 +1,8 @@
 const express = require("express");
+const path = require('path');
 const userRouter = require("./routers/userRouter.js");
 const bunchRouter = require("./routers/bunchRouter.js")
+const flowerRouter = require("./routers/flowerRouters.js")
 
 const app = express();
 app.use(express.json());
@@ -14,7 +16,8 @@ app.use((req, res, next) => {
 
 app.use("/api", bunchRouter);
 app.use("/api", userRouter);
-
+app.use("/api", flowerRouter);
+app.use('/images/flowers', express.static(path.join(__dirname, 'images/flowers')));
 
 
    

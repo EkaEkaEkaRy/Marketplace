@@ -1,0 +1,78 @@
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+const { Pool } = require('pg');
+
+const pool = new Pool({
+    user: 'postgres',
+    password: 'qwert',
+    host: 'localhost',
+    port: 5432,
+    database: 'Flowers_web'
+});
+      
+const app = express();
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+  });
+
+  //app.use(express.json({ limit: '50mb' }));
+  //app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+// Настраиваем хранилище для загружаемых картинок
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images/flowers/');
+  },
+  filename: (req, file, cb) => {
+    // Генерируем уникальное имя файла, если название совпадает с существующим
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const fileName = `${uniqueSuffix}-${file.originalname}`;
+    cb(null, fileName);
+  },
+});
+const upload = multer({ storage });
+
+
+// Обработчик для загрузки картинки
+exports.create_flower = app.post('', upload.single('image'), async (req, res) => {
+  try {
+    // Получаем URL и название загруженной картинки
+    const imageUrl = `http://localhost:1337/images/flowers/${req.file.filename}`;
+    const flower = req.body.flower;
+    const seller = req.body.seller;
+    const count = req.body.count;
+    const cost = req.body.cost;
+
+
+    // Сохраняем картинку в базе данных
+    await pool.query(`INSERT INTO warehouse (type, seller, count, cost, image) 
+    VALUES ((SELECT id FROM type WHERE type.name = '${flower}' LIMIT 1), ${seller}, ${count}, ${cost}, '${imageUrl}')`);
+
+    res.status(200).json({ message: 'Картинка успешно загружена' });
+  } catch (error) {
+    console.error('Ошибка при загрузке картинки:', error);
+    res.status(500).json({ message: 'Ошибка при загрузке картинки' });
+  }
+});
+
+
+
+exports.get_flowers = app.get("", async(req, res) => {  
+  try {
+      const id = req.query.id;
+      const findFrowers = await pool.query(
+          `SELECT warehouse.id, type.name AS name, count, cost, image FROM warehouse, type 
+          WHERE seller = ${id} AND type.id = warehouse.type;`
+      )
+      res.json(findFrowers["rows"])
+      res.status(200)
+  } catch (err) {
+      res.sendStatus(400);
+  }
+  
+});
