@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import s from './select_flower.module.css'
 
-const ProductSelector = () => {
+const ProductSelector = (props) => {
+
+  const type_name = props.type_name
 
   async function  getListOfTypes(){
       let type_flowers = [];
@@ -22,7 +24,7 @@ const ProductSelector = () => {
 
   getListOfTypes();
 
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(type_name);
   const products = localStorage.getItem('ListOfTypes').split(",");
 
   const handleInputChange = (event) => {

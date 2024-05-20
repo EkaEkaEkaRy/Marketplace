@@ -11,7 +11,7 @@ const Items = (props) => {
 
     return (
         <div className={s.item} id = {id}>
-        <NavLink style={{textDecoration: "none"}}>
+        <NavLink to ={"/Flower_sklad/Create?id=" + id + "&name=" + name + "&cost=" + price + "&count=" + count} style={{textDecoration: "none"}}>
         <div className={s.back}>
             <div className={s.image_position}><img src={image} alt="Фото цветка" className={s.flower_image}/></div>
             <div className={s.text_position}>

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import s from './create_f.module.css'
 import Header from '../../sklad/header/header';
@@ -6,15 +6,27 @@ import ProductSelector from './components/select_flower';
 import Delete_flower from './components/image/recycle-bin.png'
 
 const Create_bunch = () => {
+    const location = useLocation();
+    const urlParams = new URLSearchParams(location.search);
+    const id_flower = urlParams.get('id');
+    const name_flower = urlParams.get('name');
+    const count_flower = urlParams.get('count');
+    const cost_flower = urlParams.get('cost');
 
     const navigate = useNavigate();
+    
+    function coalesce(value, defaultValue) {
+        return value !== undefined && value !== null ? value : defaultValue;
+      }
+
+    let [user, setuser] = useState({
+        type: coalesce(name_flower, ""),
+        seller: localStorage.getItem('userId'),
+        count: coalesce(count_flower, ""),
+        cost: coalesce(cost_flower, ""),
+    })
 
     
-    let [user, setuser] = useState({
-        seller: localStorage.getItem('userId'),
-        count: "",
-        cost: ""
-    })
 
     const [isCreating, setIsCreating] = useState(true);
     const [newTypeValue, setNewTypeValue] = useState('');
@@ -102,7 +114,7 @@ const Create_bunch = () => {
                         </div>
                     </div>
                     
-                    <div className={s.form}><ProductSelector/><input onClick={handleCreateNewType} type="button" className={s.create_type_button} value={'Создать новый тип'}/>
+                    <div className={s.form}><ProductSelector type_name={user.type}/><input onClick={handleCreateNewType} type="button" className={s.create_type_button} value={'Создать новый тип'}/>
                     </div>
                     {!isCreating && (
                         <div className={s.form}>
@@ -115,7 +127,7 @@ const Create_bunch = () => {
                     <div className={s.form}><input className={s.input} name="cost" type="number" placeholder='Стоимость цветка' value={user.cost} onChange={handlerChange} required /></div>
                     <div className={s.form}><input className={s.input} name="count" type="number" placeholder='Количество цветов на складе' value={user.count} onChange={handlerChange} required /></div>
                     <div className={s.form}>
-                        <input className={s.button} type="submit" value="Войти" />
+                        <input className={s.button} type="submit" value="Сохранение" />
                     </div>
                 </div>
                 
