@@ -36,7 +36,7 @@ const Flower_sklad = () => {
                     <Manu/>
                 </div>
                 <div>
-                    <NavLink to="/Flower_sklad/Create">
+                    <NavLink to="/Flower_sklad/Create" style={{textDecoration: 'none'}}>
                         <button className={s.button}><img src={plus} className={s.plus} alt=""></img>Создать</button>
                     </NavLink>
                 </div>
