@@ -1,9 +1,10 @@
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import s from './create_f.module.css'
 import Header from '../../sklad/header/header';
 import ProductSelector from './components/select_flower';
 import Delete_flower from './components/image/recycle-bin.png'
+import arrow from './components/image/left-arrow.png'
 
 const Create_bunch = () => {
     const location = useLocation();
@@ -76,16 +77,33 @@ const Create_bunch = () => {
         event.preventDefault();
         const formData = new FormData();
         formData.append('flower', localStorage.getItem('flower_type_for_create_flower_form'))
-        formData.append('seller', user.seller);
         formData.append('count', user.count);
         formData.append('cost', user.cost);
         formData.append('image', image);
 
-        const res = await fetch('http://localhost:1337/api/flower', {
-            method: "POST",
-            body: formData,
-        });
+        if (!id_flower){
+            formData.append('seller', user.seller);
+            const res = await fetch('http://localhost:1337/api/flower', {
+                method: "POST",
+                body: formData});
+            if (res.ok) navigate('/Flower_sklad')
+        } else {
+            formData.append('id_flower', id_flower);
+            const res = await fetch("http://localhost:1337/api/flower", {
+                method: "PUT",
+                body: formData
+            })
         if (res.ok) navigate('/Flower_sklad')
+        }
+        
+    }
+
+    const handlerDelete = async (event) => {
+        event.preventDefault();
+        const res = await fetch('http://localhost:1337/api/flower?flower=' + id_flower, {
+            method: "DELETE"});
+        if (res.ok) navigate('/Flower_sklad')
+        
     }
 
     if (localStorage.getItem('user_role') === '2')
@@ -93,6 +111,7 @@ const Create_bunch = () => {
         <div className={s.app_wrapper}>
             <Header/>
       <main className={s.main}>
+        <NavLink to="/Flower_sklad"><img src={arrow} alt="Назад" style={{width: '2.5rem', height: '2.5rem', paddingTop: '2rem', paddingLeft: '2rem'}}/></NavLink>
       <div className={s.title}>Создать цветок</div>
         <div className={s.item}>
             <div>
@@ -100,17 +119,7 @@ const Create_bunch = () => {
                 <div>
                     <div className={s.form}>
                         <div> 
-                            <input type="file" onChange={handleImageUpload} className={s.input}
-                            />
-                            {user.image && (
-                                <div>
-                                <img
-                                    src={URL.createObjectURL(user.image)}
-                                    alt="Uploaded"
-                                    style={{ width: '15rem', height: '15rem', marginTop: '1rem' }}
-                                />
-                                </div>
-                            )}
+                            <input type="file" onChange={handleImageUpload} className={s.input}/>
                         </div>
                     </div>
                     
@@ -134,7 +143,7 @@ const Create_bunch = () => {
             </form>
         </div>
         </div>
-        <div className={s.delete_text}>Удалить информацию о цветке <img src={Delete_flower} alt="" className={s.delete_img}/></div>
+        <div className={s.delete_text} onClick={handlerDelete}>Удалить информацию о цветке <img src={Delete_flower} alt="" className={s.delete_img}/></div>
       </main>
     </div>
     )

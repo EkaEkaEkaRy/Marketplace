@@ -1,13 +1,13 @@
 .back {
     background-color: #ffffff;
     height: 100vh;
-    font-family: "Andika", sans-serif;
+    font-family: "Arial", sans-serif;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 .app_wrapper {
-  font-family: "Andika", sans-serif;
+  font-family: "Arial", sans-serif;
   margin: auto;
   padding: 0;
   height: 100vh;
@@ -32,14 +32,14 @@ a {
 }
 
 .title {
-    padding-top: 32px;
+    padding-top: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 700;
-    font-size: 1.5em;
+    font-size: 2em;
     color: #E7717D;
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
   }
   
   .input {
@@ -48,9 +48,11 @@ a {
     border-color: #c2b9b0;
     border-style: solid;
     padding-left: 20px;
-    font-family: "Andika", sans-serif;
+    font-family: "Arial", sans-serif;
     width: 30rem;
     background-color: #FFFDF9;
+    font-size: 15px;
+    color: #837b74;
   }
 
   
@@ -65,10 +67,11 @@ a {
     display: inline-block;
     background-color: #E7717D;
     color: #FFFDF9;
-    font-family: "Andika", sans-serif;
+    font-family: "Arial", sans-serif;
     cursor: pointer;
     margin-bottom: 5rem;
     margin-top: 3rem;
+    font-size: 15px;
   }
 
   .form {
@@ -91,10 +94,12 @@ a {
     border-style: solid;
     border-radius: 0 12px 12px 0;
     border-color: #e6e0da;
-    padding-left: 20px;
-    font-family: "Andika", sans-serif;
+    padding-left: 0.4rem;
+    font-family: "Arial", sans-serif;
     width: 10rem;
     background-color: #fefcf9;
+    font-size: 15px;
+    color: #837b74;
   }
 
   .type_form {
@@ -103,10 +108,11 @@ a {
     border-color: #c2b9b0;
     border-style: solid;
     padding-left: 20px;
-    font-family: "Andika", sans-serif;
+    font-family: "Arial", sans-serif;
     width: 22rem;
     background-color: #FFFDF9;
     margin-right: 1rem;
+    font-size: 15px;
   }
 
   .type_button {
@@ -119,9 +125,10 @@ a {
     display: inline-block;
     background-color: #e88a94;
     color: #FFFDF9;
-    font-family: "Andika", sans-serif;
+    font-family: "Arial", sans-serif;
     cursor: pointer;
     width: 7rem;
+    font-size: 15px;
   }
 
   .delete_img {
@@ -135,5 +142,5 @@ a {
     justify-content: right;
     align-items: center;
     padding-right: 1rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
   }

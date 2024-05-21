@@ -75,7 +75,7 @@ const ProductSelector = (props) => {
 
   return (
     <div>
-      <input className={s.input} name="type" value={inputValue}
+      <input className={s.input} autoComplete="off" name="type" value={inputValue}
         onChange={handleInputChange} placeholder="Выберите цветок"
       />
       {inputValue && getMatchingProducts() && (
