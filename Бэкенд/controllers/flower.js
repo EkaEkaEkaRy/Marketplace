@@ -76,3 +76,42 @@ exports.get_flowers = app.get("", async(req, res) => {
   }
   
 });
+
+
+exports.update_flower = app.put('', upload.single('image'), async (req, res) => {
+  try {
+    // Получаем URL и название загруженной картинки
+    const flower = req.body.flower;
+    const flower_id = req.body.id_flower;
+    const count = req.body.count;
+    const cost = req.body.cost;
+
+    if (!req.file){
+      await pool.query(`UPDATE warehouse SET type=(SELECT id FROM type 
+        WHERE type.name = '${flower}' LIMIT 1), count= ${count}, cost= ${cost} WHERE id=${flower_id}`);
+    } else {
+      const imageUrl = `http://localhost:1337/images/flowers/${req.file.filename}`;
+      await pool.query(`UPDATE warehouse SET type=(SELECT id FROM type 
+        WHERE type.name = '${flower}' LIMIT 1), count= ${count}, cost= ${cost}, image='${imageUrl}' WHERE id=${flower_id}`);
+    }
+      
+      
+    res.status(200).json({ message: 'Картинка успешно загружена' });
+  } catch (error) {
+    console.error('Ошибка при загрузке картинки:', error);
+    res.status(500).json({ message: 'Ошибка при загрузке картинки' });
+  }
+});
+
+
+
+exports.delete_flower = app.delete('', async (req, res) => {
+  try {
+    const id = req.query.flower;
+    await pool.query(`DELETE FROM warehouse WHERE id = ${id};`);
+    res.status(200).json({ message: '' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: '' });
+  }
+});
