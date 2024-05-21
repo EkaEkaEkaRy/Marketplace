@@ -1,6 +1,7 @@
 .back {
     background-color: #ffffff;
     height: 100%;
+    font-family: "Arial", sans-serif;
 }
 
 .button {
@@ -15,11 +16,12 @@
     display: inline-block;
     background-color: #E7717D;
     color: #FFFDF9;
-    font-family: "Andika", sans-serif;
+    font-family: "Arial", sans-serif;
     cursor: pointer;
     margin-left: 2rem;
     display: flex;
     position: left;
+    font-size: 16px;
   }
 
   .plus {
@@ -29,3 +31,11 @@
     margin-left: 0;
     padding-right: 1rem;
   }
+
+  .items {
+    margin-top: 4rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    align-items: center;
+    justify-content: center;
+}
