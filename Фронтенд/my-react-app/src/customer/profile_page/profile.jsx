@@ -5,12 +5,15 @@ import Person from './components/person'
 import History from './components/history'
 //import { useState } from 'react';
 import { useNavigate } from "react-router-dom"
-
+import { Navigate } from "react-router-dom";
 
 const Profile = () => {
     const navigate = useNavigate();
 
-    if (localStorage.getItem('user_role') === '1')
+    if (localStorage.getItem('user_role') !== '1')
+        {
+            return <Navigate to="/Login" />
+        }
     return (
         <div className={p.app_wrapper}>
             <Header className={p.header}/>
@@ -24,7 +27,6 @@ const Profile = () => {
             </main>
         </div>
     )
-    else { navigate("/Login")}
 }
 
 export default Profile

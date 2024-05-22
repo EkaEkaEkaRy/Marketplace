@@ -6,3 +6,32 @@
 .body_blok {
     padding-top: 2rem;
 }
+
+.main {
+    padding-top: 30px;
+    color: #081F5C;
+  }
+
+
+  .title {
+    padding-top: 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 2em;
+    color: #E7717D;
+    padding-bottom: 1rem;
+  }
+
+  .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 170px;
+  }

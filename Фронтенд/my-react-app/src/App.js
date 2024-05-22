@@ -16,15 +16,22 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="*" Component={Main} />
+        <Route path="/*" Component={Main} />
+        <Route path="/*/:type/:count/:min_cost/:max_cost/:name" Component={Main} />
+
         <Route path="/Login" Component={Login} />
         <Route path="/Bunch" Component={Bunch_page}/>
+        <Route path="/Bunch/:id" Component={Bunch_page}/>
         <Route path="/Shopping_cart" Component={Shopping_cart}/>
+
         <Route path="/Bunch_sklad" Component={Bunch_sklad}/>
         <Route path="/Bunch_sklad/Create" Component={Create_bunch}/>
+        <Route path="/Flower_sklad/Create/:id/:name/:flowers/:description" Component={Create_flower}/>
+
         <Route path="/Flower_sklad" Component={Flower_sklad}/>
         <Route path="/Flower_sklad/Create/:id/:name/:cost/:count" Component={Create_flower}/>
         <Route path="/Flower_sklad/Create" Component={Create_flower}/>
+
         <Route path="/Orders" Component={Orders}/>
         <Route path="/Profile" Component={Profile}/>
         <Route path="/Profile/Edit" Component={Edit_profile}/>

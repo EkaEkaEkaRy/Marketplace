@@ -15,8 +15,8 @@ const Items = (props) => {
         <div className={s.back}>
             <div className={s.image_position}><img src={image} alt="Фото цветка" className={s.flower_image}/></div>
             <div className={s.text_position}>
-                <div style={{fontSize: '18px', marginBottom: '0.2rem'}}>{name}</div>
-                <div>Цена: {price}</div>
+                <div className={s.text_name}>{name}</div>
+                <div>Цена: {price} ₽</div>
                 <div>Количество: {count}</div>
             </div>
         </div>

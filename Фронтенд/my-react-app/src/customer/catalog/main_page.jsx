@@ -1,6 +1,7 @@
 //import Nav from "./main_comp/nav"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Navigate } from "react-router-dom"
+import { useLocation } from "react-router-dom";
 import React from 'react';
 
 import filter from './components/images/filter.png'
@@ -13,7 +14,31 @@ import Ad from "./components/ad"
 import s from "./main.module.css"
 
 const Main = () => {
-  const navigate = useNavigate()
+  
+  const location = useLocation();
+    const urlParams = new URLSearchParams(location.search);
+    const type_flower_bunch = urlParams.get('type');
+    const count_bunch = urlParams.get('count');
+    const min_cost_bunch = urlParams.get('min_cost');
+    const max_cost_bunch = urlParams.get('max_cost')
+    const name_bunch = urlParams.get('name');
+
+    const [resList, SetResList] = useState()
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+      const getBunchs = async () => {
+        const res = await fetch('http://localhost:1337/api/bunch?type=' + type_flower_bunch + "&count=" + count_bunch + "&min_cost=" + min_cost_bunch + "&max_cost=" + max_cost_bunch + "&name=" + name_bunch, {
+            method: "GET"
+        });
+        if (res.ok) {
+            const data = await res.json()
+            SetResList(data);
+            setIsLoading(false)
+      }}
+    
+      getBunchs();
+    })
 
   const [activeTab, setActiveTab] = useState("")
     const handleFilter = () => {
@@ -26,7 +51,14 @@ const Main = () => {
     };
 
     const functions = ['По возрастанию цены', 'По убыванию цены'];
-    if (localStorage.getItem('user_role') !== '2')
+    if (localStorage.getItem('user_role') === '2'){
+      return <Navigate to="/Login" />
+    }
+
+    if (isLoading) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div className={s.back}> 
       <div>
@@ -54,21 +86,13 @@ const Main = () => {
         </div>
 
         <main className={s.items}>
-          
-          <Ad image="image.png" name="Букет цветочный" price="2000"/>
-          <Ad image="image.png" name="Букет цветочный" price="2000"/>
-          <Ad image="image.png" name="Букет цветочный" price="2000"/>
-          <Ad image="image.png" name="Букет цветочный" price="2000"/>
-          <Ad image="image.png" name="Букет цветочный" price="2000"/>
-          <Ad image="image.png" name="Букет цветочный" price="2000"/>
-          <Ad image="image.png" name="Букет цветочный" price="2000"/>
-          <Ad image="image.png" name="Букет цветочный" price="2000"/>
-          <Ad image="image.png" name="Букет цветочный" price="2000"/>
-          <Ad image="image.png" name="Букет цветочный" price="2000"/>
+          {resList && resList.map(element => {
+              return (
+                <Ad name = {element['name']} image = {element["image"]} price = {element["cost"]} id = {element["id"]}/>
+          )})}
         </main>
 
       </div>
     )
-    else {navigate("/Login")}
   }
 export default Main

@@ -5,7 +5,6 @@ import Shop_cart from './images/shopping-cart.png'
 import User_img from './images/user-profile.png'
 
 const Header = () => {
-    console.log(localStorage.getItem('userId'))
     if (!localStorage.getItem('userId'))
     return (
         <header className={s.head}>

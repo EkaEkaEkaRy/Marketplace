@@ -6,18 +6,18 @@ const Items = (props) => {
     const name = props.name
     const image = props.image
     const price = props.price
-    const count = props.count
     const id = props.id
+    const flowers = props.flowers
+    const description = props.description
 
     return (
         <div className={s.item} id = {id}>
-        <NavLink to ={"/Flower_sklad/Create?id=" + id + "&name=" + name + "&cost=" + price + "&count=" + count} style={{textDecoration: "none"}}>
+        <NavLink to ={"/Bunch_sklad/Create?id=" + id + "&name=" + name + "&flowers=" + flowers + "&description=" + description} style={{textDecoration: "none"}}>
         <div className={s.back}>
-            <div className={s.image_position}><img src={image} alt="Фото цветка" className={s.flower_image}/></div>
+            <div className={s.image_position}><img src={image} alt="Фото букета" className={s.flower_image}/></div>
             <div className={s.text_position}>
-                <div style={{fontSize: '18px', marginBottom: '0.2rem'}}>{name}</div>
-                <div>Цена: {price}</div>
-                <div>Количество: {count}</div>
+                <div className={s.text_name}>{name}</div>
+                <div>Цена: {price} ₽</div>
             </div>
         </div>
         </NavLink>

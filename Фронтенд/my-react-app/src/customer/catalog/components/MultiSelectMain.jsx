@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useCallback } from 'react';
 
     
-const MultiSelect = () => {
+const MultiSelect = ({onSelect}) => {
 
   async function  getListOfTypes(){
       let type_flowers = [];
@@ -27,6 +27,13 @@ const MultiSelect = () => {
     const [inputValue, setInputValue] = useState('');
     const [selectedProducts, setSelectedProducts] = useState([]);
     const products = localStorage.getItem('ListOfTypes').split(",")
+
+    useEffect(() => {
+      localStorage.setItem('filter_types_flower', selectedProducts.join('-'))
+      const types = selectedProducts.join('-')
+      onSelect(types)
+    }, [selectedProducts]);
+
   
     const handleInputChange = (event) => {
       const value = event.target.value;
@@ -77,7 +84,7 @@ const MultiSelect = () => {
 
       return (
         <div>
-        <lable>Тип цветов в букете <input className={s.input} name="type" value={inputValue} onChange={handleInputChange}/></lable>
+        <lable>Тип цветов в букете <input className={s.input} name="type" value={inputValue} autoComplete="off" onChange={handleInputChange} /></lable>
         {inputValue && getMatchingProducts() && (
         <div className={s.function_list_container}><div className={s.function_list}
         style={{position: 'absolute', top: buttonRect.top, left: buttonRect.left}}>
@@ -99,5 +106,5 @@ const MultiSelect = () => {
     )
 
 }
-/*&times;*/
+
 export default MultiSelect

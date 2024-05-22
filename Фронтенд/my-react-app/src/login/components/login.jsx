@@ -34,20 +34,20 @@ const LoginForm = () => {
             headers: { "Accept": "application/json", "Content-Type":
             "application/json" }
         });
-        const data = await res.json();
-        if (res.status === 404 || !data) document.getElementById("answer_for_user_login").innerHTML = "пользователя не существует";
+        
+        if (res.status === 404) document.getElementById("answer_for_user_login").innerHTML = "пользователя не существует";
         else if (res.status === 400) document.getElementById("answer_for_user_login").innerHTML ="неверный пароль";
-        else {
-            //setauthenticated(true)
-            //localStorage.setItem("authenticated", true);
-            localStorage.setItem('userId', data[0]['id']);
+        else if (res.ok){
+            const data = await res.json();
             if (data[0]['role'] === '2') {
+                localStorage.setItem('userId', data[0]['id']);
                 localStorage.setItem('user_role', '2')
                 navigate("/Bunch_sklad");
             }
             else {
+                localStorage.setItem('userId', data[0]['id']);
                 localStorage.setItem('user_role', '1')
-                navigate("/*");
+                navigate("/");
             }
           }
         

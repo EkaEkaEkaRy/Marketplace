@@ -1,0 +1,39 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    line-height: 2.3;
+    border-radius: 12px;
+    border-color: #c2b9b0;
+    background-color: #FFFDF9;
+    border-style: solid;
+    font-family: "Arial", sans-serif;
+    width: 50rem;
+  }
+
+.describtion {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    line-height: 2.3;
+    border-radius: 12px;
+    border-color: #c2b9b0;
+    background-color: #FFFDF9;
+    border-style: solid;
+    font-family: "Arial", sans-serif;
+}
+
+.head {
+    font-family: "Arial", sans-serif;
+    color: #4E4E4E;
+    font-size: 18px;
+    margin-left: 2rem;
+}
+
+.text {
+    font-family: "Arial", sans-serif;
+    color: #4E4E4E;
+    font-size: 16px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}

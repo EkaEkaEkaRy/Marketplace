@@ -10,3 +10,43 @@
 .item {
     display: inline-block;
 }
+
+.image_position {
+    margin-top: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flower_image {
+    width: 13rem;
+    height: 13rem;
+}
+
+.text_position {
+    margin-bottom: 1rem;
+    margin-left: 0.9rem;
+    margin-right: 0.9rem;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+}
+
+.text_name {
+    font-size: 16px;
+    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
+    height: 3.4rem;
+}
+
+.input {
+    line-height: 2.3;
+    border-radius: 12px;
+    border-color: #c2b9b0;
+    border-style: solid;
+    padding-left: 20px;
+    font-family: "Arial", sans-serif;
+    width: 3rem;
+    background-color: #FFFDF9;
+    font-size: 15px;
+    color: #837b74;
+  }

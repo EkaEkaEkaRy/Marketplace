@@ -5,6 +5,7 @@ import Header from '../../sklad/header/header';
 import ProductSelector from './components/select_flower';
 import Delete_flower from './components/image/recycle-bin.png'
 import arrow from './components/image/left-arrow.png'
+import { Navigate } from 'react-router-dom';
 
 const Create_bunch = () => {
     const location = useLocation();
@@ -77,6 +78,7 @@ const Create_bunch = () => {
         event.preventDefault();
         const formData = new FormData();
         formData.append('flower', localStorage.getItem('flower_type_for_create_flower_form'))
+        localStorage.setItem('flower_type_for_create_flower_form', null)
         formData.append('count', user.count);
         formData.append('cost', user.cost);
         formData.append('image', image);
@@ -93,7 +95,7 @@ const Create_bunch = () => {
                 method: "PUT",
                 body: formData
             })
-        if (res.ok) navigate('/Flower_sklad')
+        if (res.ok) return <Navigate to="/Flower_sklad" />
         }
         
     }
@@ -106,7 +108,9 @@ const Create_bunch = () => {
         
     }
 
-    if (localStorage.getItem('user_role') === '2')
+    if (localStorage.getItem('user_role') !== '2'){
+        return <Navigate to="/Login" />
+    }
     return(
         <div className={s.app_wrapper}>
             <Header/>
@@ -147,7 +151,6 @@ const Create_bunch = () => {
       </main>
     </div>
     )
-    else navigate("/Login")
 }
 
 export default Create_bunch

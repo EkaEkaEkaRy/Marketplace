@@ -4,9 +4,10 @@
     border-color: #c2b9b0;
     border-style: solid;
     padding-left: 20px;
-    font-family: "Andika", sans-serif;
+    font-family: "Arial", sans-serif;
     width: 30rem;
     background-color: #FFFDF9;
+    font-size: 15px;
   }
 
   .function_list_container {
@@ -23,4 +24,32 @@
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 100;
+    font-size: 15px;
+  }
+
+  .input_count {
+    line-height: 2.3;
+    border-radius: 12px;
+    border-color: #c2b9b0;
+    border-style: solid;
+    padding-left: 20px;
+    font-family: "Arial", sans-serif;
+    width: 4rem;
+    background-color: #FFFDF9;
+    color: #4E4E4E;
+    margin-right: 1rem;
+    font-size: 15px;
+  }
+
+  .input_del {
+    line-height: 2.3;
+    border-radius: 12px;
+    border-color: #c2b9b0;
+    border-style: solid;
+    padding-left: auto;
+    font-family: "Arial", sans-serif;
+    width: 2rem;
+    background-color: #FFFDF9;
+    color: #4E4E4E;
+    font-size: 15px;
   }

@@ -54,9 +54,9 @@ const DeliverForm = () => {
     };
 
     return (
-        <div>
+        <div style={{display: 'flex', justifyContent: 'right'}}>
             <form onSubmit={handlerSubmit}>
-                <div className={s.title}>Форма для оформления заказа</div>
+                <div className={s.title}>Оформить заказ</div>
                 <div className={s.login_wrapper}>
                     <div><input className={s.input} name="address" type="text" placeholder='Адрес доставки' value={user.address} onChange={handlerChange} required /></div>
                     <div><input className={s.input} name="date" type="date" placeholder='Дата доставки' value={user.date} onChange={handlerChange} required /></div>

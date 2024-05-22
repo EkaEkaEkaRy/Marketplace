@@ -1,13 +1,14 @@
 .back {
     background-color: #ffffff;
     height: 100vh;
-    font-family: "Andika", sans-serif;
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 .app_wrapper {
-  font-family: "Andika", sans-serif;
+  font-family: "Arial", sans-serif;
   margin: auto;
   padding: 0;
   height: 100vh;
@@ -28,19 +29,20 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 7%;
+  margin-top: 3rem;
 }
 
 .title {
-    padding-top: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    font-size: 1.5em;
-    color: #E7717D;
-    padding-bottom: 3rem;
-  }
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 2em;
+  color: #E7717D;
+  padding-bottom: 1rem;
+}
+
   
   .input {
     line-height: 2.3;
@@ -48,9 +50,11 @@ a {
     border-color: #c2b9b0;
     border-style: solid;
     padding-left: 20px;
-    font-family: "Andika", sans-serif;
+    font-family: "Arial", sans-serif;
     width: 30rem;
     background-color: #FFFDF9;
+    font-size: 15px;
+    color: #837b74;
   }
 
   
@@ -65,15 +69,31 @@ a {
     display: inline-block;
     background-color: #E7717D;
     color: #FFFDF9;
-    font-family: "Andika", sans-serif;
+    font-family: "Arial", sans-serif;
     cursor: pointer;
     margin-bottom: 7rem;
     margin-top: 3rem;
+    font-size: 15px;
+    
   }
 
   .form {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 1rem;
+  }
+
+  .delete_img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .delete_text {
+    font-size: 18px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 1rem;
     padding-bottom: 1rem;
   }

@@ -8,7 +8,8 @@ const Header = () => {
     const navigate = useNavigate();
     const Exit = () => {
         localStorage.setItem('userId', '')
-        navigate("/*");
+        localStorage.setItem('user_role', '')
+        navigate("/");
     }
 
     console.log(localStorage.getItem('userId'))
