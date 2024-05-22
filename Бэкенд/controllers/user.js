@@ -30,8 +30,8 @@ exports.find_user = app.get("", async(req, res) => {
         const findUser = await pool.query(
             `SELECT id, role FROM users WHERE mail = '${mail}' AND password = '${password}';`
         )
-        console.log(findUser)
-        res.json(findUser["rows"])
+        if(findUser['rows'].length == 0) res.sendStatus(400);
+        else res.json(findUser["rows"])
     } catch (err) {
         res.sendStatus(400);
     }

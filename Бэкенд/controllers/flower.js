@@ -72,6 +72,7 @@ exports.get_flowers = app.get("", async(req, res) => {
       res.json(findFrowers["rows"])
       res.status(200)
   } catch (err) {
+    console.error(err)
       res.sendStatus(400);
   }
   
