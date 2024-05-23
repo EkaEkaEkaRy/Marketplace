@@ -24,9 +24,7 @@ app.use((req, res, next) => {
 exports.find_user = app.get("", async(req, res) => {  
     try {
         const mail = req.query.mail;
-        console.log(mail)
         const password = req.query.password;
-        console.log(password)
         const findUser = await pool.query(
             `SELECT id, role FROM users WHERE mail = '${mail}' AND password = '${password}';`
         )
@@ -46,13 +44,13 @@ exports.create_user = app.post("", async(req, res) => {
         const findUser = await pool.query(
             `SELECT id FROM users WHERE mail = '${login}';`
         )
-        if (findUser["rows"].length != 0) sendStatus(400);
-        const newUser = await pool.query(
+        if (findUser["rows"].length != 0) res.status(400);
+        else {const newUser = await pool.query(
             `INSERT INTO users (name, mail, phone, password, role) VALUES ('${name}', '${login}', '${phone}', '${password}', 1) RETURNING id;`
         )
-        res.json(newUser["rows"])
+        res.json(newUser["rows"])}
     } catch (err) {
-        res.sendStatus(400);
+        res.status(400);
     }
     
 });

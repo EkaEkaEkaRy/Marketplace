@@ -25,9 +25,11 @@ exports.add_into_cart = app.post('', async (req, res) => {
     try {
         const user = req.body.user;
         const bunch = req.body.bunch;
-        console.log(user, bunch)
         const result = await pool.query(`SELECT id FROM shopping_cart WHERE customer=${user} AND bunch=${bunch}`)
-        if(result['rows'].length == 0) await pool.query(`INSERT INTO shopping_cart (customer, bunch, count) VALUES (${user}, ${bunch}, 1)`)
+        if(result['rows'].length == 0) {
+        const answer = await pool.query(`INSERT INTO shopping_cart (customer, bunch, count) VALUES (${user}, ${bunch}, 1)`)
+        res.status(201).json({ message: 'Букет добавлен в корзину' });}
+      else res.status(400).json({ message: 'Букет уже в корзине' });
     } catch (error) {
         console.error('Ошибка при загрузке картинки:', error);
         res.status(500).json({ message: 'Ошибка при загрузке картинки' });
@@ -38,11 +40,12 @@ exports.add_into_cart = app.post('', async (req, res) => {
 exports.get_cart = app.get('', async (req, res) => {
     try {
         const user = req.query.user;
-        const shoppingCart = await pool.query(`SELECT shopping_cart.id, bunch.name, bunch.image, shopping_cart.count, SUM(bunch_composition.count * warehouse.cost) AS cost
+        const shoppingCart = await pool.query(`SELECT shopping_cart.id, bunch.id AS bunch_id, bunch.name, bunch.image, shopping_cart.count, SUM(bunch_composition.count * warehouse.cost) AS cost
         FROM bunch_composition, warehouse, bunch, shopping_cart 
         WHERE bunch.id = bunch_composition.bunch AND bunch_composition.flower = warehouse.id AND shopping_cart.bunch = bunch.id AND shopping_cart.customer = ${user}
-        GROUP BY shopping_cart.id, bunch.name, bunch.image, shopping_cart.count`)
-        res.json(shoppingCart['rows'])
+        GROUP BY shopping_cart.id, bunch.name, bunch.image, shopping_cart.count, bunch.id`)
+        if (shoppingCart['rows'].length == 0) {res.status(400).json({ message: 'Корзина пуста' });}
+        else res.json(shoppingCart['rows']) 
     } catch (error) {
         console.error('Ошибка при загрузке картинки:', error);
         res.status(500).json({ message: 'Ошибка при загрузке картинки' });

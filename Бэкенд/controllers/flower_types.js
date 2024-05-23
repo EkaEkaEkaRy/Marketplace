@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 exports.get_flower_type = app.get("", async(req, res) => {  
     try {
         const Types = await pool.query(
-            `SELECT id, name FROM type`
+            `SELECT id, name FROM type ORDER BY name`
         )
         res.json(Types["rows"])
   

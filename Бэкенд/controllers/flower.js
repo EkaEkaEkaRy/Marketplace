@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const { Pool } = require('pg');
+const fs = require('fs')
 
 const pool = new Pool({
     user: 'postgres',
@@ -37,7 +38,6 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-
 // Обработчик для загрузки картинки
 exports.create_flower = app.post('', upload.single('image'), async (req, res) => {
   try {
@@ -67,7 +67,7 @@ exports.get_flowers = app.get("", async(req, res) => {
       const id = req.query.id;
       const findFrowers = await pool.query(
           `SELECT warehouse.id, type.name AS name, count, cost, image FROM warehouse, type 
-          WHERE seller = ${id} AND type.id = warehouse.type;`
+          WHERE seller = ${id} AND type.id = warehouse.type ORDER BY name`
       )
       res.json(findFrowers["rows"])
       res.status(200)
@@ -86,6 +86,7 @@ exports.update_flower = app.put('', upload.single('image'), async (req, res) => 
     const flower_id = req.body.id_flower;
     const count = req.body.count;
     const cost = req.body.cost;
+    console.log(flower)
 
     if (!req.file){
       await pool.query(`UPDATE warehouse SET type=(SELECT id FROM type 
@@ -109,6 +110,12 @@ exports.update_flower = app.put('', upload.single('image'), async (req, res) => 
 exports.delete_flower = app.delete('', async (req, res) => {
   try {
     const id = req.query.flower;
+    const image_path = await pool.query(`SELECT image FROM warehouse WHERE id=${id}`)
+
+    const rootDir = path.dirname(__dirname);
+    const fullPath = path.join(rootDir, 'images/flowers', image_path["rows"][0]["image"].slice(37));
+
+    await fs.promises.unlink(path.join(fullPath));
     await pool.query(`DELETE FROM warehouse WHERE id = ${id};`);
     res.status(200).json({ message: '' });
   } catch (error) {

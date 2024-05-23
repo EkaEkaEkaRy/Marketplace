@@ -2,6 +2,7 @@ const Pool = require('pg').Pool
 const express = require("express");
 const multer = require('multer');
 const path = require('path');
+const fs = require("fs")
 
 const pool = new Pool({
     user: 'postgres',
@@ -38,14 +39,15 @@ app.use((req, res, next) => {
     try {
         const id = req.query.user;
         const name = req.query.name;
+        const orderby = req.query.orderby
         let findBunchs;
         if (!id) {
-            if (name == 'null'){
+            if (name == 'null' && orderby == 'null'){
               const result = await pool.query(`SELECT bunch.id, bunch.name, bunch.image, SUM(bunch_composition.count * warehouse.cost) AS cost 
               FROM bunch_composition, warehouse, bunch 
               WHERE bunch.id = bunch_composition.bunch AND bunch_composition.flower = warehouse.id GROUP BY bunch.id, bunch.name, bunch.image`)
               findBunchs = result['rows']
-            } else {
+            } else if (!name) {
               const type_flowers = req.query.type;
               const count_bunch = req.query.count;
               const min_cost = req.query.min_cost;
@@ -80,11 +82,21 @@ app.use((req, res, next) => {
                 }
                 if (max_cost) {
                   if (count_bunch || min_cost) query += `AND `;
-                  query += `SUM(bunch_composition.count * warehouse.cost) <= ${max_cost}`
+                  query += `SUM(bunch_composition.count * warehouse.cost) <= ${max_cost} `
                 }
               }
+              if (orderby != 'null') 
+                {
+                  query += `ORDER BY SUM(bunch_composition.count * warehouse.cost) ${orderby}`
+                }
   
               const result = await pool.query(query)
+              findBunchs = result['rows']
+            } else {
+              const result = await pool.query(`SELECT bunch.id, bunch.name, bunch.image, SUM(bunch_composition.count * warehouse.cost) AS cost 
+              FROM bunch_composition, warehouse, bunch 
+              WHERE bunch.id = bunch_composition.bunch AND bunch_composition.flower = warehouse.id GROUP BY bunch.id, bunch.name, bunch.image
+              ORDER BY SUM(bunch_composition.count * warehouse.cost) ${orderby}`)
               findBunchs = result['rows']
             }
             
@@ -204,40 +216,16 @@ app.use((req, res, next) => {
   exports.delete_bunch = app.delete('', async (req, res) => {
     try {
       const id = req.query.id;
+      const image_path = await pool.query(`SELECT image FROM bunch WHERE id=${id}`)
+      
+      const rootDir = path.dirname(__dirname);
+      const fullPath = path.join(rootDir, 'images/bunches', image_path["rows"][0]["image"].slice(37));
+
+      await fs.promises.unlink(path.join(fullPath));
       await pool.query(`DELETE FROM bunch_composition WHERE bunch = ${id}; DELETE FROM bunch WHERE id = ${id};`);
       res.status(200).json({ message: '' });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: '' });
     }
-  });
-
-
-  exports.get_one_bunch = app.get("", async(req, res) => {  
-    try {
-        const id = req.query.bunch;
-          const result = await pool.query(`SELECT bunch.id, bunch.name, bunch.image, SUM(bunch_composition.count * warehouse.cost) AS cost, bunch.description 
-                FROM bunch_composition, warehouse, bunch 
-                WHERE bunch.id = bunch_composition.bunch AND bunch_composition.flower = warehouse.id AND bunch.id = ${id}
-                GROUP BY bunch.id, bunch.name, bunch.image, warehouse.seller`);
-
-          const findBunchs = await Promise.all(result.rows.map(async (element) => {
-                const findFlowers = await pool.query(`SELECT type.name AS name, bunch_composition.count AS quantity 
-                              FROM bunch, bunch_composition, warehouse, type 
-                              WHERE bunch.id = bunch_composition.bunch AND bunch_composition.flower = warehouse.id AND warehouse.type = type.id
-                              AND bunch.id = ${element.id}`);
-              
-                return {
-                  ...element,
-                  flowers: JSON.stringify(findFlowers.rows)
-                };
-              }));
-              console.log(findBunchs)
-              res.json(findBunchs)
-            res.status(200)
-              
-        } catch (err) {
-        res.sendStatus(400);
-    }
-    
   });
