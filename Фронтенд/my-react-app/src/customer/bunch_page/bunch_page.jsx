@@ -48,11 +48,11 @@ const Bunch_page = () => {
         </div>
         <main className={s.main}>
           <NavLink to="/*"><img src={arrow} alt="Назад" style={{width: '2.5rem', height: '2.5rem', paddingTop: '2rem', paddingLeft: '2rem'}}/></NavLink>
-        <div className={s.title}>{resList.name}</div>
+        
         <div className={s.item}>
           <div className={s.wrapper}>
-            <Describtion description={resList.description}/>
-            <ImageShCart image={resList.image}/>
+            <Describtion description={resList.description} flowers={resList.flowers} name={resList.name} cost={resList.cost} count={resList.count}/>
+            <ImageShCart image={resList.image} id={resList.id}/>
           </div>
         </div>
         </main>

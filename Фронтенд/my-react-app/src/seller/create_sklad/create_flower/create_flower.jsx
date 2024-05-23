@@ -73,11 +73,16 @@ const Create_bunch = () => {
         setImage(event.target.files[0]);
     };
 
+    const handlerSelect = (name) => {
+        setuser({ ...user, "type": name })
+    }
+
 
     const handlerSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append('flower', localStorage.getItem('flower_type_for_create_flower_form'))
+        formData.append('flower', user.type)
+        console.log(user.type)
         localStorage.setItem('flower_type_for_create_flower_form', null)
         formData.append('count', user.count);
         formData.append('cost', user.cost);
@@ -95,7 +100,8 @@ const Create_bunch = () => {
                 method: "PUT",
                 body: formData
             })
-        if (res.ok) return <Navigate to="/Flower_sklad" />
+            console.log(res.status)
+        if (res.status === 200) navigate("/Flower_sklad")
         }
         
     }
@@ -126,8 +132,8 @@ const Create_bunch = () => {
                             <input type="file" onChange={handleImageUpload} className={s.input}/>
                         </div>
                     </div>
-                    
-                    <div className={s.form}><ProductSelector type_name={user.type}/><input onClick={handleCreateNewType} type="button" className={s.create_type_button} value={'Создать новый тип'}/>
+                    <input name="type" value={user.type} type="hidden"></input>
+                    <div className={s.form}><ProductSelector type_name={user.type} onSelectType={handlerSelect}/><input onClick={handleCreateNewType} type="button" className={s.create_type_button} value={'Создать новый тип'}/>
                     </div>
                     {!isCreating && (
                         <div className={s.form}>
@@ -137,8 +143,8 @@ const Create_bunch = () => {
                     )}
 
 
-                    <div className={s.form}><input className={s.input} name="cost" type="number" placeholder='Стоимость цветка' value={user.cost} onChange={handlerChange} required /></div>
-                    <div className={s.form}><input className={s.input} name="count" type="number" placeholder='Количество цветов на складе' value={user.count} onChange={handlerChange} required /></div>
+                    <div className={s.form}><input className={s.input} name="cost" type="number" placeholder='Стоимость цветка' value={user.cost} onChange={handlerChange} min={1} required /></div>
+                    <div className={s.form}><input className={s.input} name="count" type="number" placeholder='Количество цветов на складе' value={user.count} onChange={handlerChange} min={1} required /></div>
                     <div className={s.form}>
                         <input className={s.button} type="submit" value="Сохранение" />
                     </div>

@@ -22,13 +22,14 @@ const Main = () => {
     const min_cost_bunch = urlParams.get('min_cost');
     const max_cost_bunch = urlParams.get('max_cost')
     const name_bunch = urlParams.get('name');
+    const orderby = urlParams.get('orderby');
 
     const [resList, SetResList] = useState()
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
       const getBunchs = async () => {
-        const res = await fetch('http://localhost:1337/api/bunch?type=' + type_flower_bunch + "&count=" + count_bunch + "&min_cost=" + min_cost_bunch + "&max_cost=" + max_cost_bunch + "&name=" + name_bunch, {
+        const res = await fetch('http://localhost:1337/api/bunch?type=' + type_flower_bunch + "&count=" + count_bunch + "&min_cost=" + min_cost_bunch + "&max_cost=" + max_cost_bunch + "&name=" + name_bunch + "&orderby=" + orderby, {
             method: "GET"
         });
         if (res.ok) {
@@ -49,8 +50,11 @@ const Main = () => {
       if (activeTab === "orderby") setActiveTab("");
       else setActiveTab("orderby");
     };
+    const handleOrderButton = () => {
+      setActiveTab("");
+    };
 
-    const functions = ['По возрастанию цены', 'По убыванию цены'];
+    //const functions = [{value:'По возрастанию цены', index: 0}, {value:'По убыванию цены', index: 1}];
     if (localStorage.getItem('user_role') === '2'){
       return <Navigate to="/Login" />
     }
@@ -79,7 +83,7 @@ const Main = () => {
             </ul>
             <div>
                 {activeTab === "filter" ? <Filter/> : activeTab === "orderby" ? 
-                <FunctionList functions={functions}/>
+                <FunctionList onChoose={handleOrderButton}/>
                  : <div></div>}
 
             </div>

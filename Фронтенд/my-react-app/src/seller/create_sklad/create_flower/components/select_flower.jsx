@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import s from './select_flower.module.css'
 
-const ProductSelector = (props) => {
-
-  const type_name = props.type_name
+const ProductSelector = ({type_name, onSelectType}) => {
 
   async function  getListOfTypes(){
       let type_flowers = [];
@@ -30,7 +28,7 @@ const ProductSelector = (props) => {
   const handleInputChange = (event) => {
     const value = event.target.value;
     setInputValue(value);
-    localStorage.setItem('flower_type_for_create_flower_form', value)
+    onSelectType(value)
   };
 
   function contains(arr, elem) {
@@ -51,7 +49,7 @@ const ProductSelector = (props) => {
 
   const handleProductSelect = (product) => {
     setInputValue(product);
-    localStorage.setItem('flower_type_for_create_flower_form', product)
+    onSelectType(product)
   };
 
   const buttonRef = useRef(null);

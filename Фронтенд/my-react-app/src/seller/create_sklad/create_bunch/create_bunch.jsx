@@ -105,7 +105,7 @@ const Create_bunch = () => {
             <div>
             <form onSubmit={handlerSubmit}>
                 <div>
-                    <div className={s.form}><input className={s.input} name="name" type="text" placeholder='Название букета' value={user.name} onChange={handlerChange} required /></div>
+                    <div className={s.form}><input className={s.input} name="name" type="text" placeholder='Название букета' value={user.name} onChange={handlerChange} maxLength={35} required /></div>
                     <div className={s.form}><input className={s.input} name="description" type="text" placeholder='Описание' value={user.description} onChange={handlerChange} /></div>
                     <div className={s.form}><input type="file" onChange={handleImageUpload} className={s.input}/></div>
                     <div className={s.form}><ProductSelector flowers = {flowers_bunch} onSelect={handlerChangeFlowers}/></div>

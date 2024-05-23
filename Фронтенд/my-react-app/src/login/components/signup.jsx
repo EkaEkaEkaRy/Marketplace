@@ -49,13 +49,12 @@ const Signup = () => {
                 password,
                 })
             });
-            const data = await res.json();
-            console.log(res.status)
-            if (res.status === 404 || !data) document.getElementById("answer_for_user").innerHTML = "Пользователь уже существует"
-            else if (res.status === 500) document.getElementById("answer_for_user").innerHTML = "Попробуйте позже"
+            if (res.status === 400) document.getElementById("answer_for_user").innerHTML = "Пользователь уже существует"
             //setauthenticated(true)
-            else {
-                localStorage.setItem('userId', data['id']);
+            else if (res.ok){
+                const data = await res.json();
+                console.log(data)
+                localStorage.setItem('userId', data[0]['id']);
                 localStorage.setItem('user_role', '1')
                 navigate("/*");
             }
@@ -73,7 +72,7 @@ const Signup = () => {
                     <div><input className={s.input} name="phone" type="phone" placeholder='Номер телефона' value = {user.phone} onChange={handlerChange} required /></div>
                     <div><input className={s.input} name="password" type="password" placeholder='Пароль' value = {user.password} onChange={handlerChange} required /></div>
                     <div><input className={s.input} name="password2" type="password" placeholder='Повторный пароль' value = {user.password2} onChange={handlerChange} required /></div>
-                    <div id="answer_for_user"></div>
+                    <div id="answer_for_user" className={s.warn}></div>
                     <div>
                             <input className={s.button} type="submit" value={"Создать аккаунт"} />
 

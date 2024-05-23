@@ -10,6 +10,7 @@ const Item = (props) => {
     const image = props.image
     const price = props.price
     const id = props.id
+    const bunch_id = props.bunch_id
     
 
     const [countOfBunchs, setCountOfBunchs] = useState(props.count)
@@ -59,11 +60,11 @@ const Item = (props) => {
     return (
         <div className={s.item}>
         <div className={s.back} >
-            <NavLink to = "/Bunch" style={{textDecoration: "none"}}>
+            <NavLink to = {"/Bunch?id=" + bunch_id} style={{textDecoration: "none"}}>
             <div className={s.image_position}><img src={image} alt="Фото букета" className={s.flower_image}/></div>
             </NavLink>
             <div className={s.text_position}>
-            <NavLink to = "/Bunch" style={{textDecoration: "none"}}>
+            <NavLink to = {"/Bunch?id=" + bunch_id} style={{textDecoration: "none"}}>
                 <div className={s.text_name}>{name}</div>
             </NavLink>
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>

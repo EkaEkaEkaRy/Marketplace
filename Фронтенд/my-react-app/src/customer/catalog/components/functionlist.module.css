@@ -8,18 +8,18 @@
     left: 50%;
     transform: translateX(2rem);
     background-color: white;
-    padding: 20px;
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0.1rem;
     z-index: 100;
   }
-  
-  .function_list ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .function_list li {
-    padding: 5px 0;
+
+  .button {
+    color: #4E4E4E;
+    font-size: 16px;
+    display: flex;
+    position: static;
+    background-color: white;
+    margin-bottom: 0.1rem;
+    border: none;
   }

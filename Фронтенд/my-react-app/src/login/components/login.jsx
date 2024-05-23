@@ -35,8 +35,7 @@ const LoginForm = () => {
             "application/json" }
         });
         
-        if (res.status === 404) document.getElementById("answer_for_user_login").innerHTML = "пользователя не существует";
-        else if (res.status === 400) document.getElementById("answer_for_user_login").innerHTML ="неверный пароль";
+        if (res.status === 400) document.getElementById("answer_for_user_login").innerHTML ="неверный логин или пароль";
         else if (res.ok){
             const data = await res.json();
             if (data[0]['role'] === '2') {
@@ -62,7 +61,7 @@ const LoginForm = () => {
                 <div className={s.login_wrapper}>
                     <div><input className={s.input} name="login" type="text" placeholder='Почта' value={user.login} onChange={handlerChange} required /></div>
                     <div><input className={s.input} name="password" type="password" placeholder='Пароль' value={user.password} onChange={handlerChange} required /></div>
-                    <div id="answer_for_user_login"></div>
+                    <div id="answer_for_user_login" className={s.warn}></div>
                     <div>
                         <input className={s.button} type="submit" value="Войти" />
                     </div>

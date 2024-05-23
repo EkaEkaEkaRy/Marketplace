@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/*" Component={Main} />
         <Route path="/*/:type/:count/:min_cost/:max_cost/:name" Component={Main} />
+        <Route path="/*/:type/:count/:min_cost/:max_cost/:name/:orderby" Component={Main} />
 
         <Route path="/Login" Component={Login} />
         <Route path="/Bunch" Component={Bunch_page}/>

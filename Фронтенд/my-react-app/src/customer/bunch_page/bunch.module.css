@@ -33,5 +33,5 @@
   .wrapper {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-column-gap: 170px;
+    grid-column-gap: 3rem;
   }
