@@ -10,7 +10,8 @@ const Items = () => {
     const [resList, SetResList] = useState()
     const [isLoading, setIsLoading] = useState(true);
     const [isEmpty, setIsEmpty] = useState(false);
-    const [entireCost, setEntireCost] = useState(0)
+    const [entireCost, setEntireCost] = useState(0);
+    //const [selectedProducts, setSelectedProducts] = useState([]);
 
     useEffect(() => {
         const getShoppingCart = async () => {

@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     font-weight: 700;
-    font-size: 19px;
+    font-size: 21px;
     color: #E7717D;
     max-width: 17rem;
     
@@ -34,6 +34,7 @@
     font-family: "Arial", sans-serif;
     width: 15rem;
     color: #4E4E4E;
+    font-size: 15px;
   }
 
   
@@ -50,4 +51,18 @@
     color: #FFFDF9;
     font-family: "Arial", sans-serif;
     cursor: pointer;
+    font-size: 17px;
+  }
+
+  .windon_mes {
+    position: fixed;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);          
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #4e4e4e;
+    background-color: #FFFDF9;
+    border: 1px solid #ccc;
+    z-index: 200;
   }

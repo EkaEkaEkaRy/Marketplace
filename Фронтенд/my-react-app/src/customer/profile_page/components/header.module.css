@@ -13,12 +13,12 @@
 }
 
 .exit_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding-top: 4rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    display: flex;
-    justify-content: right;
-    align-items: center;
     color: rgb(78, 78, 78);
 }
 

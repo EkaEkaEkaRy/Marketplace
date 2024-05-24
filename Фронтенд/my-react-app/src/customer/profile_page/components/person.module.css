@@ -7,15 +7,6 @@
     
     font-weight: 700;
     border: none;
-    @media (max-width: 480px) {
-        font-size: 1.4em;
-    }
-    @media (max-width: 768px) and (min-width: 481px){
-        font-size: 1.5em;
-    }
-    @media (min-width: 768px) {
-        font-size: 1.6em;
-    }
 }
 
 .person :hover {
@@ -62,3 +53,11 @@
     width: 2rem;
     height: 2rem;
   }
+
+.text_name{
+    display: flex;
+    justify-content: center;
+    color: #4E4E4E;
+    font-family: "Andika", sans-serif;
+    font-size: 25px;
+}

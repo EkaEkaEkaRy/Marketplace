@@ -2,10 +2,11 @@ import DeliverForm from "./components/deliver"
 import Items from "./components/items"
 import Header from "../catalog/components/header";
 import s from "./shopping_cart.module.css"
-import React from 'react';
+//import React, { useState } from 'react';
 //import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+
 
 import arrow from './components/image/left-arrow.png'
 
@@ -24,8 +25,8 @@ const Shopping_cart = () => {
       <div className={s.title}>Корзина</div>
         <div className={s.item}>
           <div className={s.wrapper}>
-            <DeliverForm />
-            <Items />
+            <DeliverForm/>
+            <Items/>
           </div>
         </div>
       </main>
