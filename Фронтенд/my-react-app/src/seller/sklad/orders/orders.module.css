@@ -2,3 +2,12 @@
     background-color: #ffffff;
     height: 100%;
 }
+
+.items {
+    padding-top: 4rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2rem;
+}

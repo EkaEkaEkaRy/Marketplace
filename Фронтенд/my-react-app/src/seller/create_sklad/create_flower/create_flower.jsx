@@ -85,7 +85,9 @@ const Create_bunch = () => {
         console.log(user.type)
         localStorage.setItem('flower_type_for_create_flower_form', null)
         formData.append('count', user.count);
+        console.log(user.count)
         formData.append('cost', user.cost);
+        console.log(user.cost)
         formData.append('image', image);
 
         if (!id_flower){

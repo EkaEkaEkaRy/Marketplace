@@ -67,6 +67,8 @@ const Create_bunch = () => {
         formData.append('name', user.name);
         formData.append('image', image);
         formData.append('description', user.description)
+        formData.append('user_id', localStorage.getItem('userId'))
+        console.log(localStorage.getItem('userId'))
 
         if (!id_bunch){
             const res = await fetch('http://localhost:1337/api/bunch', {

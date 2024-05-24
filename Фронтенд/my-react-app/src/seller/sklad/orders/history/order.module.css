@@ -1,0 +1,32 @@
+.order_body {
+    display: flex;
+    flex-direction: column;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    color: #4E4E4E;
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+}
+
+.info {
+    color: #4E4E4E;
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+    margin-top: 1rem;
+}
+
+.input {
+    line-height: 2.3;
+    border-radius: 12px;
+    border-color: #c2b9b0;
+    border-style: solid;
+    padding-left: 20px;
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
+    color: #4E4E4E;
+    width: 15rem;
+    background-color: #FFFDF9;
+  }

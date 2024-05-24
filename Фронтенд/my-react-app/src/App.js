@@ -8,7 +8,7 @@ import Orders from './seller/sklad/orders/orders'
 import Create_bunch from "./seller/create_sklad/create_bunch/create_bunch";
 import Create_flower from "./seller/create_sklad/create_flower/create_flower.jsx"
 import Shopping_cart from "./customer/shopping_cart/shopping_cart";
-import Profile from "./customer/profile_page/profile.jsx";
+import Profile from "./profile_page/profile.jsx";
 import Edit_profile from "./edit_profile/edit_profile.jsx";
 
 
@@ -34,7 +34,10 @@ function App() {
         <Route path="/Flower_sklad/Create" Component={Create_flower}/>
 
         <Route path="/Orders" Component={Orders}/>
+        <Route path="/Orders/:status" Component={Orders}/>
+
         <Route path="/Profile" Component={Profile}/>
+        <Route path="/Profile/:status" Component={Profile}/>
         <Route path="/Profile/Edit" Component={Edit_profile}/>
       </Routes>
     </BrowserRouter>

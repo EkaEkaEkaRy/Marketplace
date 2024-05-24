@@ -1,0 +1,54 @@
+.back {
+    background-color: #ebebeb;
+    width: 10rem;
+    padding: 1%;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+    margin-top: 0.4rem;
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+}
+
+.item {
+    display: inline-block;
+}
+
+.image_position {
+    margin-top: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flower_image {
+    width: 7rem;
+    height: 7rem;
+}
+
+.text_position {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    text-decoration: none;
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+}
+
+.text_name {
+    font-size: 16px;
+    margin-bottom: 0.1rem;
+    margin-top: 0.5rem;
+    height: 3rem;
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+}
+
+.text{
+    font-size: 16px;
+    margin-bottom: 0.1rem;
+    margin-top: 0.5rem;
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+}

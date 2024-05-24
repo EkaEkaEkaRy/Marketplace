@@ -1,0 +1,22 @@
+.order_body {
+    background-color: #e7ded5;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    margin-right: 4rem;
+}
+
+.header {
+    padding: 1rem;
+    color: #4E4E4E;
+    font-family: "Arial", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.filter {
+    padding: 1rem;
+    color: #4E4E4E;
+    font-family: "Arial", sans-serif;
+    font-size: 18px;
+}
