@@ -137,12 +137,13 @@ app.use((req, res, next) => {
       const name = req.body.name;
       const flowers = JSON.parse(req.body.flowers)
       const description = req.body.description
+      const user_id = req.body.user_id
 
       const id_bunch = await pool.query(`INSERT INTO bunch (name, image, description) 
       VALUES ('${name}', '${imageUrl}', '${description}') RETURNING id;`);
       flowers.forEach(async element => {
         await pool.query(`INSERT INTO bunch_composition (bunch, flower, count) VALUES (${id_bunch["rows"][0]['id']}, (SELECT warehouse.id FROM warehouse, type 
-            WHERE warehouse.type = type.id AND type.name = '${element.name}' LIMIT 1), ${element.quantity});`)
+            WHERE warehouse.type = type.id AND type.name = '${element.name}' AND warehouse.seller=${user_id} LIMIT 1), ${element.quantity});`)
       });
   
       res.status(200).json({ message: 'Картинка успешно загружена' });
@@ -161,12 +162,21 @@ app.use((req, res, next) => {
       const name = req.body.name;
       const flowers = JSON.parse(req.body.flowers);
       const description = req.body.description
+      const user_id = req.body.user_id
   
       if (!req.file){
         await pool.query(`UPDATE bunch SET name = '${name}', description='${description}' WHERE id = ${id};`);
 
       } else {
-        const imageUrl = `http://localhost:1337/images/flowers/${req.file.filename}`;
+
+        const image_path = await pool.query(`SELECT image FROM bunch WHERE id=${id}`)
+      
+        const rootDir = path.dirname(__dirname);
+        const fullPath = path.join(rootDir, 'images/bunches', image_path["rows"][0]["image"].slice(37));
+
+        await fs.promises.unlink(path.join(fullPath));
+
+        const imageUrl = `http://localhost:1337/images/bunches/${req.file.filename}`;
         await pool.query(`UPDATE bunch SET name = '${name}', image = '${imageUrl}', description ='${description}' WHERE id = ${id};`);
       }
       /*
@@ -180,7 +190,7 @@ app.use((req, res, next) => {
       let string_flowers = '';
       console.log(flowers)
         for (const element of flowers) {
-        const result = await pool.query(`SELECT warehouse.id FROM type, warehouse WHERE warehouse.type = type.id AND type.name = '${element.name}' LIMIT 1`);
+        const result = await pool.query(`SELECT warehouse.id FROM type, warehouse WHERE warehouse.type = type.id AND type.name = '${element.name}' AND warehouse.seller=${user_id} LIMIT 1`);
         if (result['rows']) {
             string_flowers += result['rows'][0]['id'] + ', ';
         }
@@ -196,12 +206,12 @@ app.use((req, res, next) => {
       };
       for (const element of flowers){
         const result = await pool.query(`UPDATE bunch_composition SET count=${element.quantity} 
-          WHERE flower= (SELECT warehouse.id FROM type, warehouse WHERE warehouse.type = type.id AND type.name = '${element.name}' LIMIT 1) AND bunch = ${id};`)
+          WHERE flower= (SELECT warehouse.id FROM type, warehouse WHERE warehouse.type = type.id AND type.name = '${element.name}' AND warehouse.seller=${user_id} LIMIT 1) AND bunch = ${id};`)
         const check_flower = await pool.query(`SELECT type.name FROM warehouse, type, bunch, bunch_composition 
         WHERE bunch.id = bunch_composition.bunch AND bunch_composition.flower = warehouse.id 
         AND warehouse.type = type.id AND bunch.id = ${id} AND type.name = '${element.name}'`)
         if(check_flower['rows'].length == 0) await pool.query(`INSERT INTO bunch_composition (bunch, flower, count) VALUES (${id}, (SELECT warehouse.id FROM type, warehouse 
-            WHERE warehouse.type = type.id AND type.name = '${element.name}' LIMIT 1), ${element.quantity})`)
+            WHERE warehouse.type = type.id AND type.name = '${element.name}' AND warehouse.seller=${user_id} LIMIT 1), ${element.quantity})`)
       }
         
       res.status(200).json({ message: 'Картинка успешно загружена' });

@@ -86,12 +86,17 @@ exports.update_flower = app.put('', upload.single('image'), async (req, res) => 
     const flower_id = req.body.id_flower;
     const count = req.body.count;
     const cost = req.body.cost;
-    console.log(flower)
 
     if (!req.file){
       await pool.query(`UPDATE warehouse SET type=(SELECT id FROM type 
         WHERE type.name = '${flower}' LIMIT 1), count= ${count}, cost= ${cost} WHERE id=${flower_id}`);
     } else {
+      const image_path = await pool.query(`SELECT image FROM warehouse WHERE id=${flower_id}`)
+
+      const rootDir = path.dirname(__dirname);
+      const fullPath = path.join(rootDir, 'images/flowers', image_path["rows"][0]["image"].slice(37));
+  
+      await fs.promises.unlink(path.join(fullPath));
       const imageUrl = `http://localhost:1337/images/flowers/${req.file.filename}`;
       await pool.query(`UPDATE warehouse SET type=(SELECT id FROM type 
         WHERE type.name = '${flower}' LIMIT 1), count= ${count}, cost= ${cost}, image='${imageUrl}' WHERE id=${flower_id}`);

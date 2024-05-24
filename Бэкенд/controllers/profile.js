@@ -2,6 +2,7 @@ const Pool = require('pg').Pool
 const express = require("express");
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs')
 
 const pool = new Pool({
     user: 'postgres',
@@ -61,6 +62,13 @@ exports.update_profile = app.put('', upload.single('image'), async (req, res) =>
       if (!req.file){
         await pool.query(`UPDATE users SET name='${name}', mail='${login}', phone='${phone}', password='${password}' WHERE id=${id}`);
       } else {
+        const image_path = await pool.query(`SELECT image FROM users WHERE id=${id}`)
+      
+        const rootDir = path.dirname(__dirname);
+        const fullPath = path.join(rootDir, 'images/users', image_path["rows"][0]["image"].slice(35));
+
+        await fs.promises.unlink(path.join(fullPath));
+
         const imageUrl = `http://localhost:1337/images/users/${req.file.filename}`;
         await pool.query(`UPDATE users SET name='${name}', mail='${login}', phone='${phone}', 
         password='${password}', image='${imageUrl}' WHERE id=${id}`);
