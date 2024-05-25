@@ -58,24 +58,31 @@ exports.update_profile = app.put('', upload.single('image'), async (req, res) =>
       const login = req.body.login;
       const phone = req.body.phone;
       const password = req.body.password;
-  
-      if (!req.file){
-        await pool.query(`UPDATE users SET name='${name}', mail='${login}', phone='${phone}', password='${password}' WHERE id=${id}`);
-      } else {
-        const image_path = await pool.query(`SELECT image FROM users WHERE id=${id}`)
       
-        const rootDir = path.dirname(__dirname);
-        const fullPath = path.join(rootDir, 'images/users', image_path["rows"][0]["image"].slice(35));
+      const check_login = await pool.query(`Select * FROM users WHERE mail = '${login}' AND NOT id = ${id}`)
+      if (check_login.rows.length !== 0) res.status(400).json({ message: 'Профиль уже существует' });
+      else {
+        if (!req.file){
+          await pool.query(`UPDATE users SET name='${name}', mail='${login}', phone='${phone}', password='${password}' WHERE id=${id}`);
+        } else {
+          const image_path = await pool.query(`SELECT image FROM users WHERE id=${id}`)
+          if (image_path["rows"][0]["image"] != null) {
+            const rootDir = path.dirname(__dirname);
+            const fullPath = path.join(rootDir, 'images/users', image_path["rows"][0]["image"].slice(35));
+  
+            await fs.promises.unlink(path.join(fullPath));
+          }
+  
+          const imageUrl = `http://localhost:1337/images/users/${req.file.filename}`;
+          await pool.query(`UPDATE users SET name='${name}', mail='${login}', phone='${phone}', 
+          password='${password}', image='${imageUrl}' WHERE id=${id}`);
+        }
+          
+          
+        res.status(200).json({ message: 'Профиль успешно обновлен' });
 
-        await fs.promises.unlink(path.join(fullPath));
-
-        const imageUrl = `http://localhost:1337/images/users/${req.file.filename}`;
-        await pool.query(`UPDATE users SET name='${name}', mail='${login}', phone='${phone}', 
-        password='${password}', image='${imageUrl}' WHERE id=${id}`);
       }
-        
-        
-      res.status(200).json({ message: 'Профиль успешно обновлен' });
+      
     } catch (error) {
       console.error('Ошибка при загрузке картинки:', error);
       res.status(500).json({ message: 'Ошибка при обновлении профиля' });
