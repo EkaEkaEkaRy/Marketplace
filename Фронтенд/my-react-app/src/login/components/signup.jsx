@@ -36,7 +36,9 @@ const Signup = () => {
         event.preventDefault();
         console.log(1)
         const {name, login, phone, password, password2} = user;
+        const phoneRegex = /^(\+7|8)?((\d{3})[-\s]?)?(\d{3})[-\s]?(\d{2})[-\s]?(\d{2})$/;
         if (password !== password2) document.getElementById("answer_for_user").innerHTML = "Пароли не совпадают"
+        else if (!phoneRegex.test(phone)) document.getElementById("answer_for_user").innerHTML = "Неверный формат данных"
         else {
             const res = await fetch('http://localhost:1337/api/create-user', {
                 method: "POST",
@@ -49,7 +51,8 @@ const Signup = () => {
                 password,
                 })
             });
-            if (res.status === 400) document.getElementById("answer_for_user").innerHTML = "Пользователь уже существует"
+            console.log(res.status)
+            if (res.status === '400') document.getElementById("answer_for_user").innerHTML = "Пользователь уже существует"
             //setauthenticated(true)
             else if (res.ok){
                 const data = await res.json();
@@ -74,7 +77,7 @@ const Signup = () => {
                     <div><input className={s.input} name="password2" type="password" placeholder='Повторный пароль' value = {user.password2} onChange={handlerChange} required /></div>
                     <div id="answer_for_user" className={s.warn}></div>
                     <div>
-                            <input className={s.button} type="submit" value={"Создать аккаунт"} />
+                            <input className={s.button} type="submit" value={"Сохранить"} />
 
                     </div>
                 </div>

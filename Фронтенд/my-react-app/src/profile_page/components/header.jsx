@@ -1,6 +1,6 @@
 import s from "./header.module.css"
 import { NavLink } from "react-router-dom"
-import React, { useState } from 'react';
+import React from 'react';
 import Log_out from './image/log-out.png'
 import { useNavigate } from "react-router-dom";
 import arrow from "./image/left-arrow.png"
@@ -11,7 +11,7 @@ const Header = () => {
     const Exit = () => {
         localStorage.setItem('userId', '')
         localStorage.setItem('user_role', '')
-        navigate("/");
+        navigate("/*");
     }
     if (localStorage.getItem('user_role') === "1"){
         return (

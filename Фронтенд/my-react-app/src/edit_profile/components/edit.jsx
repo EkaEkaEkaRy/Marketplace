@@ -43,8 +43,9 @@ const Edit_form = ({profile_info}) => {
         formData.append('password', user.password)
         formData.append('phone', user.phone)
         formData.append('image', image);
-
-        if (user.password !== user.password2) document.getElementById("answer_for_user").innerHTML = "Пароли не совпадают"
+        const phoneRegex = /^(\+7|8)?((\d{3})[-\s]?)?(\d{3})[-\s]?(\d{2})[-\s]?(\d{2})$/;
+        if (!phoneRegex.test(user.phone)) document.getElementById("answer_for_user").innerHTML = "Неверный формат данных"
+        else if (user.password !== user.password2) document.getElementById("answer_for_user").innerHTML = "Пароли не совпадают"
         else {
             const res = await fetch('http://localhost:1337/api/info-user', {
                 method: "PUT",
@@ -52,7 +53,7 @@ const Edit_form = ({profile_info}) => {
             });
             const data = await res.json();
             console.log(res.status)
-            if (res.status === 404 || !data) document.getElementById("answer_for_user").innerHTML = "Данные введены неверно"
+            if (res.status === 400 || !data) document.getElementById("answer_for_user").innerHTML = "Невозможно поменять почту"
             else if (res.status === 500) document.getElementById("answer_for_user").innerHTML = "Попробуйте позже"
             //setauthenticated(true)
             else if (res.status === 200){
@@ -74,7 +75,7 @@ const Edit_form = ({profile_info}) => {
                         <div><input type="file" onChange={handleImageUpload} className={s.input}/></div>
                         <div><input className={s.input} name="password" type="password" placeholder='Пароль' value = {user.password} onChange={handlerChange} required /></div>
                         <div><input className={s.input} name="password2" type="password" placeholder='Повторный пароль' value = {user.password2} onChange={handlerChange} required /></div>
-                        <div id="answer_for_user"></div>
+                        <div id="answer_for_user" className={s.warn}></div>
                         <div>
                                 <input className={s.button} type="submit" value={"Создать аккаунт"} />
 

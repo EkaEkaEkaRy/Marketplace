@@ -6,7 +6,7 @@
     font-weight: 700;
     font-size: 21px;
     color: #E7717D;
-    max-width: 17rem;
+    max-width: 26rem;
     
   }
   
@@ -32,7 +32,7 @@
     border-style: solid;
     padding-left: 20px;
     font-family: "Arial", sans-serif;
-    width: 15rem;
+    width: 22rem;
     color: #4E4E4E;
     font-size: 15px;
   }
@@ -52,6 +52,7 @@
     font-family: "Arial", sans-serif;
     cursor: pointer;
     font-size: 17px;
+    margin-top: 2rem;
   }
 
   .windon_mes {
@@ -65,4 +66,15 @@
     background-color: #FFFDF9;
     border: 1px solid #ccc;
     z-index: 200;
+  }
+
+  .warn {
+    display: flex;
+    position: fixed;
+    justify-content: left;
+    align-items: left;
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
+    color: #4E4E4E;
+    width: 24rem;
   }

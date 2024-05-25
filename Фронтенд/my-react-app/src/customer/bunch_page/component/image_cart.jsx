@@ -1,16 +1,20 @@
 import React from 'react';
 import s from './image_cart.module.css'
 import { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const ImageShCart = (props) => {
 
+    const navigate = useNavigate()
     const [showElement, setShowElement] = useState(false);
     const [textMessege, setTextMessege] = useState("");
 
     const HandlerClick = async () => {
         const user = localStorage.getItem('userId')
         const bunch = props.id
-        const res = await fetch('http://localhost:1337/api/shopping-cart', {
+        if(localStorage.getItem('user_role') != 1) navigate("/Login")
+        else {
+            const res = await fetch('http://localhost:1337/api/shopping-cart', {
                 method: "POST",
                 headers: { "Accept": "application/json", "Content-Type":
                 "application/json" },
@@ -34,6 +38,9 @@ const ImageShCart = (props) => {
                     setShowElement(false);
                 }, 3000);
             }
+    
+        }
+        
     }
 
     return (

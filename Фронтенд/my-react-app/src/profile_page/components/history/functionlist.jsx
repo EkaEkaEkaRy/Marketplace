@@ -28,7 +28,9 @@ const FunctionList = ({onChoose}) => {
 
   const onclick_func = (event) => {
     onChoose();
-    const url = `/Profile?status=${event.target.value}`
+    let url;
+    if (event.target.value === 'Все') url = `/Profile`
+    else url = `/Profile?status=${event.target.value}`
     navigate(url)
   }
 
@@ -43,6 +45,7 @@ const FunctionList = ({onChoose}) => {
           }}
         >
           <div>
+              <input className={s.button} type="button" onClick={onclick_func} value={'Все'}></input>
               <input className={s.button} type="button" onClick={onclick_func} value={'Ожидает рассмотрения'}></input>
               <input className={s.button} type="button" onClick={onclick_func} value={'Заказ принят'}></input>
               <input className={s.button} type="button" onClick={onclick_func} value={'Заказ собран'}></input>

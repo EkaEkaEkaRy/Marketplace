@@ -1,11 +1,11 @@
-import { NavLink } from "react-router-dom"
-import styled from 'styled-components';
+import { NavLink, useNavigate } from "react-router-dom"
 import s from "./ad.module.css"
 import React from 'react';
 import Sh_cart from './images/shopping-cart2.png'
 import { useState } from "react";
 
 const Ad = (props) => {
+    const navigate = useNavigate()
     const name = props.name
     const image = props.image
     const price = props.price
@@ -17,7 +17,7 @@ const Ad = (props) => {
 
     const HandlerClick = async () => {
         const user = localStorage.getItem('userId')
-
+        if (localStorage.getItem('user_role') !== '1') navigate("/Login")
         const bunch = id
         const res = await fetch('http://localhost:1337/api/shopping-cart', {
                 method: "POST",

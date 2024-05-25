@@ -138,6 +138,9 @@ a {
 
   .delete_text {
     font-size: 18px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
     display: flex;
     justify-content: right;
     align-items: center;
