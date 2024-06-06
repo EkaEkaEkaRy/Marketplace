@@ -23,6 +23,7 @@ app.use("/api", flowerRouter);
 app.use("/api", typeRouter);
 app.use("/api", shcartRouter);
 app.use("/api", orderRouter)
+
 app.use('/images/flowers', express.static(path.join(__dirname, 'images/flowers')));
 app.use('/images/bunches', express.static(path.join(__dirname, 'images/bunches')));
 app.use('/images/users', express.static(path.join(__dirname, 'images/users')));
