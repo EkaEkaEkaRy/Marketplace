@@ -44,7 +44,7 @@ const ImageShCart = (props) => {
     }
 
     return (
-        <div className={s.input}>
+            <div className={s.input}>
             {showElement && (
                 <div className={s.windon_mes}>
                     {textMessege}
@@ -53,7 +53,6 @@ const ImageShCart = (props) => {
             <img src={props.image} alt="Фото букета" className={s.image}/>
             <input type='submit' className={s.button} value={"Добавить в корзину"} onClick={HandlerClick}></input>
         </div>
-
 
     )
 }

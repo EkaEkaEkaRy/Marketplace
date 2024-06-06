@@ -43,8 +43,12 @@ const Edit_profile = () => {
         <NavLink to="/Profile"><img src={arrow} alt="Назад" style={{width: '2.5rem', height: '2.5rem', paddingTop: '2rem', paddingLeft: '2rem'}}/></NavLink>
             <div className={s.item}>
             <div className={s.wrapper}>
-                <Person profile_info={resList}/>
-                <Edit_form profile_info={resList}/>
+                <div className={s.pos}>
+                    <Person profile_info={resList}/>
+                </div>
+                <div className={s.pos}>
+                    <Edit_form profile_info={resList}/>
+                </div>
             </div>
             </div>
         </main>

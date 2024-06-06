@@ -68,7 +68,7 @@ const DeliverForm = () => {
     };
     
     return (
-        <div style={{display: 'flex', justifyContent: 'right'}}>
+        <div className={s.form} style={{display: 'flex', justifyContent: 'right'}}>
             {showElement && (
                 <div className={s.windon_mes}>
                     Заказ создан

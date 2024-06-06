@@ -11,8 +11,8 @@ const Describtion = (props) => {
       let description = props.description;
       if(description === "") description = null
     return (
-        <div className={s.input}>
-            <div style={{display: 'grid', gridTemplateColumns: '2fr 1fr'}}>
+            <div className={s.input}>
+            <div style={{display: 'grid', gridTemplateColumns: '3fr 2fr'}}>
             <div className={s.describtion}>
                 <div className={s.head}>Название букета</div>
                 <div className={s.text}>{props.name}</div>
@@ -36,8 +36,6 @@ const Describtion = (props) => {
                 <div className={s.head}>Букетов в наличии: {props.count}</div>
             </div>
         </div>
-
-
     )
 }
 

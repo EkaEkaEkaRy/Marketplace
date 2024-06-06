@@ -4,6 +4,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Item from "./item";
+import s from './deliver.module.css'
 
 const Items = () => {
 

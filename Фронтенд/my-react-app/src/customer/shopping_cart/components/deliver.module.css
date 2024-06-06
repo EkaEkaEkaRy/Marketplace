@@ -30,11 +30,15 @@
     border-radius: 12px;
     border-color: #c2b9b0;
     border-style: solid;
-    padding-left: 20px;
     font-family: "Arial", sans-serif;
-    width: 22rem;
     color: #4E4E4E;
     font-size: 15px;
+    @media (min-width: 1300px) {
+      width: 22rem;
+    }
+    @media (max-width: 1300px) {
+      width: 18rem;
+    }
   }
 
   
@@ -77,4 +81,15 @@
     font-size: 15px;
     color: #4E4E4E;
     width: 24rem;
+  }
+
+  s.form {
+    @media (min-width: 1300px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    @media (max-width: 1300px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }

@@ -51,8 +51,12 @@ const Bunch_page = () => {
         
         <div className={s.item}>
           <div className={s.wrapper}>
+            <div className={s.pos}>
             <Describtion description={resList.description} flowers={resList.flowers} name={resList.name} cost={resList.cost} count={resList.count}/>
+            </div>
+            <div className={s.pos}>
             <ImageShCart image={resList.image} id={resList.id}/>
+            </div>
           </div>
         </div>
         </main>

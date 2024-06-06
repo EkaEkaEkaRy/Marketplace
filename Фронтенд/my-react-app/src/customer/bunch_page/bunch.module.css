@@ -31,7 +31,25 @@
     margin-top: 2rem;
   }
   .wrapper {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-column-gap: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .pos {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 900px) {
+    .wrapper {
+      flex-direction: column;
+    }
+    .pos:last-child {
+      order: -1;
+    }
   }

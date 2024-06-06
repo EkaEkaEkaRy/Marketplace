@@ -9,6 +9,14 @@
     margin-right: 5rem;
     align-items: center;
     justify-content: center;
+    @media (max-width: 1300px){
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+    @media (min-width: 1300px) {
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
 }
 
 .filter {
