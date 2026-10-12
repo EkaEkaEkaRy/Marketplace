@@ -1,0 +1,59 @@
+.back {
+    background-color: #ffffff;
+    height: 100vh;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.app_wrapper {
+  font-family: "Arial", sans-serif;
+  margin: auto;
+  padding: 0;
+  height: 100vh;
+  /*background-image: url('back.svg');
+  background-repeat: repeat;*/
+  background-color: #FFFDF9;
+  display: block;
+}
+
+.main {
+  padding-top: 30px;
+  color: #081F5C;
+}
+a {
+  color: #081F5C;
+}
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+
+.title {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 2em;
+  color: #E7717D;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 500px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 3fr 5fr;
+    grid-column-gap: 170px;
+  }
+}
+@media (max-width: 700px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

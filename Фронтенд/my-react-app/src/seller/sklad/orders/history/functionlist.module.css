@@ -1,0 +1,25 @@
+.function_list_container {
+    position: relative;
+  }
+  
+  .function_list {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(2rem);
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0.1rem;
+    z-index: 100;
+  }
+
+  .button {
+    color: #4E4E4E;
+    font-size: 16px;
+    display: flex;
+    position: static;
+    background-color: white;
+    margin-bottom: 0.1rem;
+    border: none;
+  }

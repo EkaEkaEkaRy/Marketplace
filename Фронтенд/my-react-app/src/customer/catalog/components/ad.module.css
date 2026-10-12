@@ -1,0 +1,65 @@
+.back {
+    background-color: #ebebeb;
+    width: 18rem;
+    padding: 1%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+.item {
+    display: inline-block;
+}
+
+.icon_sh {
+    width: 2rem;
+    height: 2rem;
+}
+
+.navlink {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 1rem;
+    margin-bottom: 0.1rem;
+}
+
+.image_position {
+    margin-top: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flower_image {
+    width: 15rem;
+    height: 15rem;
+}
+
+.text_position {
+    margin-bottom: 1rem;
+    margin-left: 1.3rem;
+    margin-right: 1.3rem;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+}
+
+.text_name {
+    font-size: 18px;
+    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
+    height: 3rem;
+}
+  
+  .windon_mes {
+    position: fixed;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);          
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #4e4e4e;
+    background-color: #FFFDF9;
+    border: 1px solid #ccc;
+    z-index: 200;
+  }

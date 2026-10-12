@@ -1,0 +1,95 @@
+.title {
+    padding-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 21px;
+    color: #E7717D;
+    max-width: 26rem;
+    
+  }
+  
+  .login_wrapper {
+    padding: 32px 0 32px;
+    font-family: "Arial", sans-serif;
+    color: #4E4E4E;
+  }
+  
+  .login_wrapper div {
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Arial", sans-serif;
+    color: #4E4E4E;
+  }
+  
+  .input {
+    line-height: 2.3;
+    border-radius: 12px;
+    border-color: #c2b9b0;
+    border-style: solid;
+    font-family: "Arial", sans-serif;
+    color: #4E4E4E;
+    font-size: 15px;
+    @media (min-width: 1300px) {
+      width: 22rem;
+    }
+    @media (max-width: 1300px) {
+      width: 18rem;
+    }
+  }
+
+  
+  .button {
+    line-height: 1.2;
+    padding: 10px 30px;
+    margin-top: 18px;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #E7717D;
+    color: #FFFDF9;
+    font-family: "Arial", sans-serif;
+    cursor: pointer;
+    font-size: 17px;
+    margin-top: 2rem;
+  }
+
+  .windon_mes {
+    position: fixed;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);          
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #4e4e4e;
+    background-color: #FFFDF9;
+    border: 1px solid #ccc;
+    z-index: 200;
+  }
+
+  .warn {
+    display: flex;
+    position: fixed;
+    justify-content: left;
+    align-items: left;
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
+    color: #4E4E4E;
+    width: 24rem;
+  }
+
+  s.form {
+    @media (min-width: 1300px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    @media (max-width: 1300px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }

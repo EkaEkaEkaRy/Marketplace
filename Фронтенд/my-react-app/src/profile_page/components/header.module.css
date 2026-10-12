@@ -1,0 +1,79 @@
+.head {
+    background-color: #E7717D;
+    background: rgb(246,187,128);
+    background: linear-gradient(20deg, rgba(246,187,128,1) 19%, rgba(231,113,125,1) 61%);
+    width: 100%;
+    position: fixed;
+    margin-top: 0;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    z-index: 200;
+}
+
+.exit_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: rgb(78, 78, 78);
+}
+
+.exit_img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.1rem;
+}
+
+.avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    @media (max-width: 480px) {
+        height: 50px;
+    }
+    @media (max-width: 768px) and (min-width: 481px){
+        height: 55px;
+    }
+    @media (min-width: 768px) {
+        height: 60px;
+    }
+    background-color: white;
+}
+
+.back {
+    top: 11px;
+    left: 20px;
+    background-color: white;
+}
+
+.arrow {
+    
+    @media (max-width: 480px) {
+        height: 30px;
+    }
+    @media (max-width: 768px) and (min-width: 481px){
+        height: 35px;
+    }
+    @media (min-width: 768px) {
+        height: 40px;
+    }
+    width: auto;
+    border: none;
+}
+.back :hover {
+    border: none;
+  
+  }

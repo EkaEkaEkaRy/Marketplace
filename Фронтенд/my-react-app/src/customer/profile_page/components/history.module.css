@@ -1,0 +1,47 @@
+.history_wrapper {
+    margin-top: 5%;
+    background-color: white;
+}
+
+.button {
+    padding: 0;
+    font-size: 1.1em;
+    font-weight: 700;
+    width: 60%;
+    border: none;
+    text-align: start;
+    text-decoration: none;
+    display: inline-block;
+    color: #081F5C;
+    font-family: "Andika", sans-serif;
+    cursor: pointer;
+    background-image: url("arrow-down-sign-to-navigate.png");
+    background-repeat: no-repeat;
+
+    @media (max-width: 480px) {
+        background-position: 175px 10px;
+        background-size: 13px 13px;
+    }
+    @media (max-width: 768px) and (min-width: 481px){
+        background-position: 183px 10px;
+        background-size: 15px 15px;
+    }
+    @media (min-width: 768px) {
+        background-position: 195px 10px;
+        background-size: 20px 20px;
+    }
+
+    
+}
+
+.item {
+    margin: 6% 0;
+}
+
+.date {
+    font-size: 0.9em;
+}
+
+.cat {
+    font-size: 0.7em;
+}

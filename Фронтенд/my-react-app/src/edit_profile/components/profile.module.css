@@ -1,0 +1,72 @@
+.person {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  
+  @media (min-width: 1000px) {
+    margin-right: 4rem;
+    margin-left: 1rem;
+  }
+  @media (max-width: 1000px) {
+    margin-right: 2rem;
+    margin-left: 4rem;
+  }
+  
+  font-weight: 700;
+  border: none;
+}
+
+.person :hover {
+  border: none;
+}
+
+.ava {
+  
+  @media (max-width: 480px) {
+      height: 10rem;
+  }
+  @media (max-width: 768px) and (min-width: 481px){
+      height: 12rem;
+  }
+  @media (min-width: 768px) {
+      height: 14rem;
+  }
+}
+
+.image_form {
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centerElement {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.image {
+  position: relative;
+  left: 10rem;
+  top: 4rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+.text_name{
+  display: flex;
+  justify-content: center;
+  color: #4E4E4E;
+  font-family: "Andika", sans-serif;
+  font-size: 18px;
+}

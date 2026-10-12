@@ -1,0 +1,28 @@
+.back {
+    background-color: #ffffff;
+    height: 100vh;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.app_wrapper {
+  font-family: "Arial", sans-serif;
+  margin: auto;
+  padding: 0;
+  height: 100vh;
+  /*background-image: url('back.svg');
+  background-repeat: repeat;*/
+  display: block;
+}
+
+.main {
+  color: #081F5C;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0;
+  margin-top: 2%;
+}

@@ -1,0 +1,77 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    border-color: #c2b9b0;
+    background-color: #e7ded5;
+    border-style: solid;
+    font-family: "Arial", sans-serif;
+    padding: 1rem;
+
+    @media (max-width: 1300px) and (min-width: 481px){
+        height: 30rem
+    }
+    @media (min-width: 1300px) {
+        width: 50rem;
+    }
+  }
+
+
+
+
+.describtion {
+    margin-bottom: 0.2rem;
+    border-radius: 12px;
+    border-color: #c2b9b0;
+    background-color: #FFFDF9;
+    border-style: solid;
+    font-family: "Arial", sans-serif;
+}
+
+.describtion_comp {
+    margin-bottom: 0.2rem;
+    border-radius: 12px;
+    border-color: #c2b9b0;
+    background-color: #FFFDF9;
+    border-style: solid;
+    font-family: "Arial", sans-serif;
+    padding-bottom: 1rem;
+}
+
+.head {
+    font-family: "Arial", sans-serif;
+    color: #4E4E4E;
+    font-size: 18px;
+    
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    @media (max-width: 1300px){
+        margin-left: 1rem;
+    }
+    @media (min-width: 1300px) {
+        margin-left: 2rem;
+    }
+}
+
+.text {
+    font-family: "Arial", sans-serif;
+    color: #4E4E4E;
+    font-size: 16px;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+    @media (max-width: 1300px){
+        margin-left: 1rem;
+    }
+    @media (min-width: 1300px) {
+        margin-left: 2rem;
+    }
+}
+
+.text_comp {
+    font-family: "Arial", sans-serif;
+    color: #4E4E4E;
+    font-size: 16px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 0.3rem;
+}
